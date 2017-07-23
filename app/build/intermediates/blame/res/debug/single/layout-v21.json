@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\Enan\\AndroidStudioProjects\\2TsMobile\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Enan\\.android\\build-cache\\7cb4d57a5b2240e7dc03d1e991fac00be4028467\\output\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\Users\\Enan\\AndroidStudioProjects\\2TsMobile\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\Enan\\.android\\build-cache\\7cb4d57a5b2240e7dc03d1e991fac00be4028467\\output\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\Users\\Enan\\AndroidStudioProjects\\2TsMobile\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\Enan\\.android\\build-cache\\7cb4d57a5b2240e7dc03d1e991fac00be4028467\\output\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\Enan\\AndroidStudioProjects\\2TsMobile\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Enan\\.android\\build-cache\\7cb4d57a5b2240e7dc03d1e991fac00be4028467\\output\\res\\layout-v21\\notification_action_tombstone.xml"
+    }
+]

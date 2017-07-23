@@ -1,0 +1,119 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:2:1-32:12
+	package
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:3:5-33
+		INJECTED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:6:5-71
+	android:name
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:6:22-68
+uses-permission#android.permission.READ_PROFILE
+ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:7:5-71
+	android:name
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:7:22-68
+uses-permission#android.permission.READ_CONTACTS
+ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:8:5-72
+	android:name
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:8:22-69
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:9:5-66
+	android:name
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:9:22-64
+application
+ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:11:5-30:19
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Enan\.android\build-cache\7cb4d57a5b2240e7dc03d1e991fac00be4028467\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\Enan\.android\build-cache\45c8667014e0e683b1d872125d24c3b2aa9f8d39\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\Enan\.android\build-cache\777a7c3153a5641d6c05bf138d0b0df72aacb687\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\Enan\.android\build-cache\b7ef1ea96ab5daf03e14df7bc81d79fd444e068c\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\Enan\.android\build-cache\216c31e78386bf8c873d3a3a08b8235f1fff6b3d\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\Enan\.android\build-cache\aa75bfede0872a016c5d3896d34a5348a200ee56\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\Enan\.android\build-cache\3c85a41624818364e2c2b1489a0233c4a0bb6db3\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\Enan\.android\build-cache\5e28f683e75f3a043a269d454003efa9610e34c2\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\Enan\.android\build-cache\092d4646e3ea5acc1fa898289b595de18ebf4afd\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Enan\.android\build-cache\0c793e557171daa2a7d62137ec03c1d2ce02eec2\output\AndroidManifest.xml:9:5-20
+	android:label
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:14:9-41
+	android:supportsRtl
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:16:9-35
+	android:roundIcon
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:15:9-54
+	android:allowBackup
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:12:9-35
+	android:icon
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:13:9-43
+	android:theme
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:17:9-40
+activity#br.com.a2ts_mobile.MainActivity
+ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:18:9-24:20
+	android:name
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:18:19-47
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:19:13-23:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:20:17-69
+	android:name
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:20:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:22:17-77
+	android:name
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:22:27-74
+activity#br.com.a2ts_mobile.User_Interface.LoginActivity
+ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:25:9-26:59
+	android:name
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:26:13-57
+activity#br.com.a2ts_mobile.User_Interface.ListThingsActivity
+ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:27:9-71
+	android:name
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:27:19-68
+activity#br.com.a2ts_mobile.User_Interface.DetailsThingsActivity
+ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:28:9-74
+	android:name
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:28:19-71
+activity#br.com.a2ts_mobile.User_Interface.EditThingsActivity
+ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:29:9-80
+	android:name
+		ADDED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml:29:19-68
+uses-sdk
+INJECTED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Enan\.android\build-cache\7cb4d57a5b2240e7dc03d1e991fac00be4028467\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\Enan\.android\build-cache\45c8667014e0e683b1d872125d24c3b2aa9f8d39\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\Enan\.android\build-cache\777a7c3153a5641d6c05bf138d0b0df72aacb687\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\Enan\.android\build-cache\b7ef1ea96ab5daf03e14df7bc81d79fd444e068c\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\Enan\.android\build-cache\216c31e78386bf8c873d3a3a08b8235f1fff6b3d\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\Enan\.android\build-cache\aa75bfede0872a016c5d3896d34a5348a200ee56\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\Enan\.android\build-cache\3c85a41624818364e2c2b1489a0233c4a0bb6db3\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\Enan\.android\build-cache\5e28f683e75f3a043a269d454003efa9610e34c2\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\Enan\.android\build-cache\092d4646e3ea5acc1fa898289b595de18ebf4afd\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Enan\.android\build-cache\0c793e557171daa2a7d62137ec03c1d2ce02eec2\output\AndroidManifest.xml:5:5-7:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Enan\.android\build-cache\7cb4d57a5b2240e7dc03d1e991fac00be4028467\output\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Enan\.android\build-cache\7cb4d57a5b2240e7dc03d1e991fac00be4028467\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\Enan\.android\build-cache\45c8667014e0e683b1d872125d24c3b2aa9f8d39\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\Enan\.android\build-cache\777a7c3153a5641d6c05bf138d0b0df72aacb687\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\Enan\.android\build-cache\b7ef1ea96ab5daf03e14df7bc81d79fd444e068c\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\Enan\.android\build-cache\216c31e78386bf8c873d3a3a08b8235f1fff6b3d\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\Enan\.android\build-cache\aa75bfede0872a016c5d3896d34a5348a200ee56\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\Enan\.android\build-cache\3c85a41624818364e2c2b1489a0233c4a0bb6db3\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\Enan\.android\build-cache\5e28f683e75f3a043a269d454003efa9610e34c2\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\Enan\.android\build-cache\092d4646e3ea5acc1fa898289b595de18ebf4afd\output\AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Enan\.android\build-cache\7cb4d57a5b2240e7dc03d1e991fac00be4028467\output\AndroidManifest.xml:27:9-31
+	android:name
+		ADDED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Enan\.android\build-cache\7cb4d57a5b2240e7dc03d1e991fac00be4028467\output\AndroidManifest.xml:26:9-47

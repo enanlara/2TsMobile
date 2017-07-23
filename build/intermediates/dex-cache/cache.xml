@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\Enan\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.0.0-beta3\8bff75d7360aaa3866f1e6949c877dfcc2b3d3e2\converter-gson-2.0.0-beta3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="8bff75d7360aaa3866f1e6949c877dfcc2b3d3e2">
+        <dex dex="C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\build\intermediates\pre-dexed\debug\converter-gson-2.0.0-beta3_226135e5e46363b5262f21e56cf4534b3dc82743.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Enan\.android\build-cache\0c793e557171daa2a7d62137ec03c1d2ce02eec2\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\build\intermediates\pre-dexed\debug\classes_a2e7da91c79b89e973cc0f8ac2aa9f61bfb70c96.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Enan\.android\build-cache\7cb4d57a5b2240e7dc03d1e991fac00be4028467\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\build\intermediates\pre-dexed\debug\classes_60c37f6a5da4231b55e953b760f335447f131d4c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Enan\.android\build-cache\45c8667014e0e683b1d872125d24c3b2aa9f8d39\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\build\intermediates\pre-dexed\debug\classes_a9b0867c4060ca449b2f9a049822900f452257d8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Enan\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.6.1\b9d63507329a7178e026fc334f87587ee5070ac5\gson-2.6.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="b9d63507329a7178e026fc334f87587ee5070ac5">
+        <dex dex="C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\build\intermediates\pre-dexed\debug\gson-2.6.1_9033829aa41647de906cd16f1e1d354d7038ba62.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Enan\.android\build-cache\5e28f683e75f3a043a269d454003efa9610e34c2\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\build\intermediates\pre-dexed\debug\classes_c4f5de288cb06890c9ad5170b2a78591a7652009.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Enan\.android\build-cache\b7ef1ea96ab5daf03e14df7bc81d79fd444e068c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\build\intermediates\pre-dexed\debug\classes_7a8a49b127d0366f34e078299850bc8aa0258e63.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Enan\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.2.0\41e67dba73c3347e4503761642c39d0e06ca1f2\retrofit-2.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="041e67dba73c3347e4503761642c39d0e06ca1f2">
+        <dex dex="C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\build\intermediates\pre-dexed\debug\retrofit-2.2.0_390e74b6140774a624a417125e3dc968fe0f0168.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Enan\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_47e0a4d122e28ade20516a9932fe0fceffaf2535.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Enan\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.11.0\840897fcd7223a8143f1d9b6f69714e7be34fd50\okio-1.11.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
+        <dex dex="C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\build\intermediates\pre-dexed\debug\okio-1.11.0_c6b2f0a664a3de5610befa3562dd34e6fbdf2842.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Enan\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.6.0\69edde9fc4b01c9fd51d25b83428837478c27254\okhttp-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
+        <dex dex="C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\build\intermediates\pre-dexed\debug\okhttp-3.6.0_ad440ad6d7bd22b361f6a475e95ac78c191b29c6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Enan\.android\build-cache\777a7c3153a5641d6c05bf138d0b0df72aacb687\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\build\intermediates\pre-dexed\debug\classes_3899758081a5ec3ca9fc1f823a37d432c8754731.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Enan\.android\build-cache\3c85a41624818364e2c2b1489a0233c4a0bb6db3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\build\intermediates\pre-dexed\debug\classes_27bfe88eea748fd63670c74d3e34d045d1f4ee23.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Enan\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\build\intermediates\pre-dexed\debug\support-annotations-25.3.1_dff0f8b6a2459358509293a583cc87d7a013ce48.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Enan\.android\build-cache\aa75bfede0872a016c5d3896d34a5348a200ee56\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\build\intermediates\pre-dexed\debug\classes_fe6a6853c0e7d8b1fcf14024670fbc0c3b95cdce.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Enan\.android\build-cache\092d4646e3ea5acc1fa898289b595de18ebf4afd\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\build\intermediates\pre-dexed\debug\classes_620df03be9b0276af84dc1a239965295e5c1d2ad.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Enan\.android\build-cache\216c31e78386bf8c873d3a3a08b8235f1fff6b3d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\Users\Enan\AndroidStudioProjects\2TsMobile\app\build\intermediates\pre-dexed\debug\classes_5126391965ab20c86d0650bfdb7e0499ce487b5a.jar" />
+    </item>
+
+</items>
