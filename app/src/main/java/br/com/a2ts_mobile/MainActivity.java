@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             public void responseLocations(List<Location> response) {
                 responseListLocation = response;
                 if(response == null){
-                    Toast.makeText(MainActivity.this, "Não foi possivel conectar com o servidor. Verifique a conexão com a internet e tente novamente!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Não foi possivel conectar com o servidor. Verifique a conexão com a internet e tente novamente!!!", Toast.LENGTH_SHORT).show();
                     btn_seach.setEnabled(false);
                 }else {
                     for (int i = 0; i < response.size(); i++) {
