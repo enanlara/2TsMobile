@@ -13,6 +13,6 @@ public interface SynchronizationThingsService {
 
     @POST("/editThings")
     @FormUrlEncoded
-    public Call<String> editThings(@Field("cod_bem") String codeThings, @Field("descricao") String description, @Field("estado") String state, @Field("localizacao") String location, @Field("situacao") String situation);
+    public Call<String> editThings(@Field("cod_bem") String codeThings, @Field("descricao") String description, @Field("estado") String state, @Field("localizacao") String location, @Field("situacao") String situation, @Field("quem_id") Integer quemId);
 
 }

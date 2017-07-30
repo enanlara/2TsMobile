@@ -15,6 +15,7 @@ import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
 
 import br.com.a2ts_mobile.Things_Manager.ThingsModel;
+import br.com.a2ts_mobile.User_Manager.UserModel;
 import retrofit2.Call;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
@@ -55,7 +56,7 @@ public class SynchronizeThings extends AsyncTask<Void, Void, String> {
                     .build();
 
             final SynchronizationThingsService services = retrofit.create(SynchronizationThingsService.class);
-             listThingsService = services.editThings(thingsModel.getCodeThing(), thingsModel.getDescription(), thingsModel.getState(), thingsModel.getLocation(), thingsModel.getSituation());
+             listThingsService = services.editThings(thingsModel.getCodeThing(), thingsModel.getDescription(), thingsModel.getState(), thingsModel.getLocation(), thingsModel.getSituation(), UserModel.ID);
 
 
             String response = listThingsService.execute().body();
