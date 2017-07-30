@@ -17,6 +17,8 @@ import br.com.a2ts_mobile.Things_Manager.GetLocationsAsync;
 import br.com.a2ts_mobile.Things_Manager.Location;
 import br.com.a2ts_mobile.User_Interface.EditThingsActivity;
 import br.com.a2ts_mobile.User_Interface.ListThingsActivity;
+import br.com.a2ts_mobile.User_Interface.LoginActivity;
+import br.com.a2ts_mobile.User_Manager.UserModel;
 
 public class MainActivity extends AppCompatActivity {
     private Spinner spn_location;
@@ -28,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(UserModel.ID == null) {
+            startActivity(new Intent(this, LoginActivity.class));
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         spn_location = (Spinner) findViewById(R.id.spn_location);

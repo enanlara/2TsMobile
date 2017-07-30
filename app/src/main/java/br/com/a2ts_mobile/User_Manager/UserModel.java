@@ -7,6 +7,8 @@ import java.io.Serializable;
  */
 
 public class UserModel implements Serializable {
+    public static Integer ID;
+
     private Integer id;
     private String name;
     private String email;

@@ -18,7 +18,7 @@ public class UserDeserialization implements JsonDeserializer<UserModel> {
         JsonElement bens = json.getAsJsonObject();
 
         if(json.getAsJsonObject().get("user") != null){
-            bens = json.getAsJsonObject();
+            bens = json.getAsJsonObject().get("user");
         }
         return (new Gson().fromJson(bens, UserModel.class));
     }
