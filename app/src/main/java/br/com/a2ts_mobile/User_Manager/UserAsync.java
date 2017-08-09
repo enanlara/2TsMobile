@@ -49,7 +49,7 @@ public class UserAsync extends AsyncTask<Void, Void, UserModel> {
 
             String baseUrl = "https://my-project-1-171803.appspot.com/";
 
-            Gson gsonConverter = new GsonBuilder().registerTypeAdapter(String.class, new UserDeserialization())
+            Gson gsonConverter = new GsonBuilder().registerTypeAdapter(UserModel.class, new UserDeserialization())
                     .create();
 
             Retrofit retrofit = new Retrofit.Builder()
