@@ -8,11 +8,15 @@ import java.io.Serializable;
 
 public class UserModel implements Serializable {
     public static Integer ID;
+    public static Integer PERMISSION;
+    public static String TOKEN;
 
     private Integer id;
     private String name;
     private String email;
     private String password;
+    private Integer permission;
+    private String token;
 
     public Integer getId() {
         return id;
@@ -43,5 +47,21 @@ public class UserModel implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getPermission() {
+        return permission;
+    }
+
+    public void setPermission(Integer permission) {
+        this.permission = permission;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

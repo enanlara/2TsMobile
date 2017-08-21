@@ -3,6 +3,7 @@ package br.com.a2ts_mobile.User_Interface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,8 +27,9 @@ public class ListThingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_things);
         Intent intent = getIntent();
-        String location = (String) intent.getSerializableExtra("location");
-
+        Bundle extras = intent.getExtras();
+        String dataSearch = extras.getString("datasearch");
+        Integer typeSearch = extras.getInt("typesearch");
         listWiewThings = (ListView)findViewById(R.id.list_things);
 
 
@@ -63,8 +65,8 @@ public class ListThingsActivity extends AppCompatActivity {
 
                 }
             });
-
-            sync.execute(location,"ola");
+            Log.i("dddddddddddddddddd", dataSearch+"---"+typeSearch);
+            sync.execute(dataSearch, String.valueOf(typeSearch));
 
 
 

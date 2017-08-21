@@ -45,9 +45,9 @@ public class UserAsync extends AsyncTask<Void, Void, UserModel> {
     private UserModel editThings(){
         try {
 
-            Call<List<UserModel>> listThingsService = null;
+            Call<UserModel> listThingsService = null;
 
-            String baseUrl = "https://my-project-1-171803.appspot.com/";
+            String baseUrl = "https://dg-2ts-server.herokuapp.com";
 
             Gson gsonConverter = new GsonBuilder().registerTypeAdapter(UserModel.class, new UserDeserialization())
                     .create();
@@ -61,11 +61,11 @@ public class UserAsync extends AsyncTask<Void, Void, UserModel> {
             listThingsService = services.logar(this.userModel.getEmail(), this.userModel.getPassword());
 
 
-            List<UserModel> response = listThingsService.execute().body();
-            if(response.size() == 0){
+            UserModel response = listThingsService.execute().body();
+            if(response.getId() == null){
                 return null;
             }else{
-               return response.get(0);
+               return response;
             }
         }catch (Exception e){
             Log.i("EXCEÇÃO----------------", e.getMessage());

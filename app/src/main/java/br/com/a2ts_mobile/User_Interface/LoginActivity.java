@@ -64,6 +64,8 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Nenhum objeto encontrado!", Toast.LENGTH_SHORT).show();
                         } else {
                             UserModel.ID = response.getId();
+                            UserModel.PERMISSION = response.getPermission();
+                            UserModel.TOKEN = response.getToken();
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         }
 

@@ -45,7 +45,7 @@ public class SynchronizeThings extends AsyncTask<Void, Void, String> {
 
             Call<String> listThingsService = null;
 
-            String baseUrl = "https://my-project-1-171803.appspot.com/";
+            String baseUrl = "https://dg-2ts-server.herokuapp.com/";
 
             Gson gsonConverter = new GsonBuilder().registerTypeAdapter(String.class, new StringDeserialization())
                     .create();
@@ -56,7 +56,8 @@ public class SynchronizeThings extends AsyncTask<Void, Void, String> {
                     .build();
 
             final SynchronizationThingsService services = retrofit.create(SynchronizationThingsService.class);
-             listThingsService = services.editThings(thingsModel.getCodeThing(), thingsModel.getDescription(), thingsModel.getState(), thingsModel.getLocation(), thingsModel.getSituation(), UserModel.ID);
+
+             listThingsService = services.synchronizeThings(UserModel.TOKEN, thingsModel.getNrThings1().toString(), thingsModel.getLocationCurrent().getId().toString(), thingsModel.getSituation(), thingsModel.getState(), thingsModel.getNote());
 
 
             String response = listThingsService.execute().body();

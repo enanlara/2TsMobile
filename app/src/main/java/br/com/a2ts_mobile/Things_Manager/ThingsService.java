@@ -11,12 +11,21 @@ import retrofit2.http.*;
 
 public interface ThingsService {
 
-    @GET("searchByLocation/{location}")
-    public Call<List<ThingsModel>> getThingByLocation(@Path("location") String location);
+    @GET("search_things_by_location/token={token}&locaid={location}")
+    public Call<List<ThingsModel>> getThingByLocation(@Path("token") String token, @Path("location") String location);
+
+    @GET("active_thing_by_num/token={token}&num={num}")
+    public Call<ThingsModel> getThingByNum(@Path("token") String token, @Path("num") String num);
+
+    @GET("search_things_missing_by_location/token={token}&locaid={location}")
+    public Call<List<ThingsModel>> getThingsMissingByLocation(@Path("token") String token, @Path("location") String location);
+
+    @GET("search_things_over_by_location/token={token}&locaid={location}")
+    public Call<List<ThingsModel>> getThingsOverByLocation(@Path("token") String token, @Path("location") String location);
 
     @GET("allThings")
     public Call<List<ThingsModel>> getAllThings();
 
-    @GET("allLocations")
-    public Call<List<Location>> getAllLocations();
+    @GET("search_locations/token={token}")
+    public Call<List<LocationModel>> getAllLocations(@Path("token") String token);
 }

@@ -16,18 +16,19 @@ public class ThingsDeserialization implements JsonDeserializer<ThingsModel> {
     @Override
     public ThingsModel deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonElement things = json.getAsJsonObject();
-        if(json.getAsJsonObject().get("things") != null){
-            things = json.getAsJsonObject().get("things");
+        if(json.getAsJsonObject().get("thing") != null){
+            things = json.getAsJsonObject().get("thing");
         }
+
         return (new Gson().fromJson(things, ThingsModel.class));    }
 }
 
-class LocationDeserialization implements JsonDeserializer<Location> {
+class LocationDeserialization implements JsonDeserializer<LocationModel> {
     @Override
-    public Location deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+    public LocationModel deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonElement locations = json.getAsJsonObject();
         if(json.getAsJsonObject().get("locations") != null){
             locations = json.getAsJsonObject().get("locations");
         }
-        return (new Gson().fromJson(locations, Location.class));    }
+        return (new Gson().fromJson(locations, LocationModel.class));    }
 }
