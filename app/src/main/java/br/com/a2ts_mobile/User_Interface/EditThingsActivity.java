@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SearchRecentSuggestionsProvider;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -71,10 +72,11 @@ public class EditThingsActivity extends AppCompatActivity {
         location.setText( thingsModel.getLocation().getRoom().toString());
         location.setEnabled(false);
         Integer idLoc = thingsModel.getLocationCurrent().getId();
+
         if(idLoc != 0){
             int cont = 0;
             for (LocationModel locationModel: LocationModel.listLocations){
-                if(locationModel.getId() == idLoc){
+                if(locationModel.getId().equals(idLoc)){
                     locationCurrent.setSelection(cont);
                     break;
                 }

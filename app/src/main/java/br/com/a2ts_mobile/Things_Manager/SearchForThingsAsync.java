@@ -115,6 +115,7 @@ public class SearchForThingsAsync extends AsyncTask<String, Void, List<ThingsMod
             if(services != null) {
                 thingsService = services.getThingByNum(UserModel.TOKEN, num);
                 ThingsModel thingsResponse = thingsService.execute().body();
+                Log.i("xxxxxxxxxxxxxx",thingsResponse.getDescription());
                 List<ThingsModel> listThings = new ArrayList<>();
                 listThings.add(thingsResponse);
                 return listThings;

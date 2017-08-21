@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
@@ -57,7 +58,7 @@ public class SynchronizeThings extends AsyncTask<Void, Void, String> {
 
             final SynchronizationThingsService services = retrofit.create(SynchronizationThingsService.class);
 
-             listThingsService = services.synchronizeThings(UserModel.TOKEN, thingsModel.getNrThings1().toString(), thingsModel.getLocationCurrent().getId().toString(), thingsModel.getSituation(), thingsModel.getState(), thingsModel.getNote());
+             listThingsService = services.synchronizeThings(UserModel.TOKEN.trim(), thingsModel.getNrThings1().toString().trim(), thingsModel.getLocationCurrent().getId().toString().trim(), thingsModel.getSituation().trim(), thingsModel.getState().trim(), (thingsModel.getNote().isEmpty()?"None":thingsModel.getNote().trim()));
 
 
             String response = listThingsService.execute().body();
@@ -89,9 +90,19 @@ public class SynchronizeThings extends AsyncTask<Void, Void, String> {
 class StringDeserialization implements JsonDeserializer<String> {
     @Override
     public String deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-        JsonElement locations = json.getAsJsonObject();
-        if(json.getAsJsonObject().get("response") != null){
-            locations = json.getAsJsonObject().get("response");
+        JsonElement response = json.getAsJsonObject();
+        if (json.getAsJsonObject().get("response") != null) {
+            response = json.getAsJsonObject().get("response");
         }
-        return (new Gson().fromJson(locations, String.class));    }
+        return (new Gson().fromJson(response, String.class));
+    }
+
+//    @Override
+//    public String deserialize(JsonElement json, Type type,
+//                               JsonDeserializationContext context) throws JsonParseException {
+//
+//        JsonObject jobject = json.getAsJsonObject();
+//
+//        return jobject.get("response").getAsString();
+//    }
 }

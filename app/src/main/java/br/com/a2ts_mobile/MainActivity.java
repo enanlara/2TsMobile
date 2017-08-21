@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void responseLocations(List<LocationModel> response) {
                 responseListLocation = response;
-                response.add(0, new LocationModel(-1, "Selecione um local"));
+                response.add(0, new LocationModel(0, "Selecione um local"));
                 LocationModel.listLocations = response;
                 if(response == null){
                     Toast.makeText(MainActivity.this, "Não foi possivel conectar com o servidor. Verifique a conexão com a internet e tente novamente!!!", Toast.LENGTH_SHORT).show();

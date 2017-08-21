@@ -14,7 +14,7 @@ public interface ThingsService {
     @GET("search_things_by_location/token={token}&locaid={location}")
     public Call<List<ThingsModel>> getThingByLocation(@Path("token") String token, @Path("location") String location);
 
-    @GET("active_thing_by_num/token={token}&num={num}")
+    @GET("search_things_by_num/token={token}&num={num}")
     public Call<ThingsModel> getThingByNum(@Path("token") String token, @Path("num") String num);
 
     @GET("search_things_missing_by_location/token={token}&locaid={location}")
