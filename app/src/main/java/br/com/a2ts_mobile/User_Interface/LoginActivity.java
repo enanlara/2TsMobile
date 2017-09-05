@@ -67,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                             UserModel.PERMISSION = response.getPermission();
                             UserModel.TOKEN = response.getToken();
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            LoginActivity.this.finish();
                         }
 
                     }

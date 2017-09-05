@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         menu.add(1, 2, 1, "Busca coisas sobrando por localização");
         menu.add(1, 3, 2, "Busca coisas faltando por localização");
         menu.add(1, 4, 3, "Busca coisa por codigo");
+        menu.add(1, 5, 4, "Sair");
 
         return true;
     }
@@ -134,6 +135,13 @@ public class MainActivity extends AppCompatActivity {
             spn_location.setVisibility(View.GONE);
             txt_num.setVisibility(View.VISIBLE);
             edt_number_things.setVisibility(View.VISIBLE);
+        }else if(item.getItemId() == 5){
+            UserModel.ID = null;
+            UserModel.PERMISSION = null;
+            UserModel.TOKEN = null;
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+            return false;
         }
         tipoDeConsuta = item.getItemId();
         return true;
