@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import br.com.a2ts_mobile.MainActivity;
 import br.com.a2ts_mobile.R;
 import br.com.a2ts_mobile.Synchronization_Manager.SynchronizeThings;
 import br.com.a2ts_mobile.Things_Manager.LocationModel;
@@ -37,6 +38,9 @@ public class EditThingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //Mostrar o botão
+        getSupportActionBar().setHomeButtonEnabled(true);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_things);
 
@@ -148,6 +152,11 @@ public class EditThingsActivity extends AppCompatActivity {
               //  Toast.makeText(EditThingsActivity.this, "Objeto " + thingsModel.getName() + " Alterado!", Toast.LENGTH_SHORT).show();
                // finish();
                 break;
+            case android.R.id.home:  //ID do seu botão (gerado automaticamente pelo android, usando como está, deve funcionar
+                startActivity(new Intent(this, MainActivity.class));  //O efeito ao ser pressionado do botão (no caso abre a activity)
+                this.finish();  //Método para matar a activity e não deixa-lá indexada na pilhagem
+                break;
+            default:break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -161,4 +170,10 @@ public class EditThingsActivity extends AppCompatActivity {
        //        this.thingsModel.setLocation(new LocationModel());
     }
 
+    @Override
+    public void onBackPressed(){ //Botão BACK padrão do android
+        startActivity(new Intent(this, MainActivity.class)); //O efeito ao ser pressionado do botão (no caso abre a activity)
+        this.finish(); //Método para matar a activity e não deixa-lá indexada na pilhagem
+        return;
+    }
 }

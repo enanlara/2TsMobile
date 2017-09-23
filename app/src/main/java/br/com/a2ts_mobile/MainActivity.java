@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if(UserModel.ID == null) {
+        if (UserModel.ID == null) {
             startActivity(new Intent(this, LoginActivity.class));
         }
         setTitle("Busca por localização");
@@ -57,12 +57,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void responseLocations(List<LocationModel> response) {
                 responseListLocation = response;
-                response.add(0, new LocationModel(0, "Selecione um local"));
+//                response.add(0, new LocationModel(0, "Selecione um local"));
                 LocationModel.listLocations = response;
-                if(response == null){
+                if (response == null) {
                     Toast.makeText(MainActivity.this, "Não foi possivel conectar com o servidor. Verifique a conexão com a internet e tente novamente!!!", Toast.LENGTH_SHORT).show();
                     btn_seach.setEnabled(false);
-                }else {
+                } else {
                     for (int i = 0; i < response.size(); i++) {
                         listLocation.add(response.get(i).getId().toString());
                         Log.i("99999999999 ", response.get(i).getRoom());
@@ -83,24 +83,27 @@ public class MainActivity extends AppCompatActivity {
 //                String locationSelected = spn_location.getSelectedItem().toString();
                 String localizacao = listLocation.get(spn_location.getSelectedItemPosition());
                 String dataSearch;
-                if (tipoDeConsuta == 4){
+                if (tipoDeConsuta == 4) {
                     dataSearch = edt_number_things.getText().toString();
-                }else{
+                } else {
                     dataSearch = localizacao;
                 }
+                if(!dataSearch.trim().equals("") && !dataSearch.equals("0")) {
+                    Intent listThingsAct = new Intent(MainActivity.this, ListThingsActivity.class);
+                    Bundle extras = new Bundle();
+                    extras.putInt("typesearch", tipoDeConsuta);
+                    extras.putString("datasearch", dataSearch);
+                    listThingsAct.putExtras(extras);
 
-                Intent listThingsAct = new Intent(MainActivity.this, ListThingsActivity.class);
-                Bundle extras = new Bundle();
-                extras.putInt("typesearch",tipoDeConsuta);
-                extras.putString("datasearch",dataSearch);
-                listThingsAct.putExtras(extras);
-
-                startActivity(listThingsAct);
+                    startActivity(listThingsAct);
+                    finish();
+                }
             }
         });
 //        startActivity(new Intent(this, ListThingsActivity.class));
     }
-    public boolean onCreateOptionsMenu(Menu menu){
+
+    public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(1, 1, 0, "Busca por localização");
         menu.add(1, 2, 1, "Busca coisas sobrando por localização");
         menu.add(1, 3, 2, "Busca coisas faltando por localização");
@@ -109,33 +112,34 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == 1){
+        if (item.getItemId() == 1) {
             setTitle("Busca por localização");
             txt_num.setVisibility(View.GONE);
             edt_number_things.setVisibility(View.GONE);
             txt_location.setVisibility(View.VISIBLE);
             spn_location.setVisibility(View.VISIBLE);
-        }else if(item.getItemId() == 2){
+        } else if (item.getItemId() == 2) {
             setTitle("Busca coisas sobrando por localização");
             txt_num.setVisibility(View.GONE);
             edt_number_things.setVisibility(View.GONE);
             txt_location.setVisibility(View.VISIBLE);
             spn_location.setVisibility(View.VISIBLE);
-        }else if(item.getItemId() == 3){
+        } else if (item.getItemId() == 3) {
             setTitle("Busca coisas faltando por localização");
             txt_num.setVisibility(View.GONE);
             edt_number_things.setVisibility(View.GONE);
             txt_location.setVisibility(View.VISIBLE);
             spn_location.setVisibility(View.VISIBLE);
-        }else if(item.getItemId() == 4){
+        } else if (item.getItemId() == 4) {
             setTitle("Busca coisas por codigo");
             txt_location.setVisibility(View.GONE);
             spn_location.setVisibility(View.GONE);
             txt_num.setVisibility(View.VISIBLE);
             edt_number_things.setVisibility(View.VISIBLE);
-        }else if(item.getItemId() == 5){
+        } else if (item.getItemId() == 5) {
             UserModel.ID = null;
             UserModel.PERMISSION = null;
             UserModel.TOKEN = null;

@@ -57,20 +57,21 @@ public class LoginActivity extends AppCompatActivity {
                 UserModel usuario = new UserModel();
                 usuario.setEmail(login.getText().toString().trim());
                 usuario.setPassword(password.getText().toString().trim());
-                final UserAsync sync = new UserAsync(LoginActivity.this, new UserAsync.onResponseRetrofitListnner() {
-                    @Override
-                    public void responseUser(UserModel response) {
-                        if (response == null) {
-                            Toast.makeText(LoginActivity.this, "Nenhum objeto encontrado!", Toast.LENGTH_SHORT).show();
-                        } else {
-                            UserModel.ID = response.getId();
-                            UserModel.PERMISSION = response.getPermission();
-                            UserModel.TOKEN = response.getToken();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            LoginActivity.this.finish();
-                        }
+                if(!usuario.getEmail().trim().equals("") && !usuario.getPassword().trim().equals("")) {
+                    final UserAsync sync = new UserAsync(LoginActivity.this, new UserAsync.onResponseRetrofitListnner() {
+                        @Override
+                        public void responseUser(UserModel response) {
+                            if (response == null) {
+                                Toast.makeText(LoginActivity.this, "Erro de autenticação!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                UserModel.ID = response.getId();
+                                UserModel.PERMISSION = response.getPermission();
+                                UserModel.TOKEN = response.getToken();
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                LoginActivity.this.finish();
+                            }
 
-                    }
+                        }
 //                    @Override
 //                    public void responseThings(List<ThingsModel> response) {
 //                        if(response == null){
@@ -86,8 +87,9 @@ public class LoginActivity extends AppCompatActivity {
 //                        }
 //
 //                    }
-                }, usuario);
-                sync.execute();
+                    }, usuario);
+                    sync.execute();
+                }
 
             }
         });
