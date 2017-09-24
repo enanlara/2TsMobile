@@ -17,6 +17,8 @@ import java.lang.reflect.Type;
 
 import br.com.a2ts_mobile.Things_Manager.ThingsModel;
 import br.com.a2ts_mobile.User_Manager.UserModel;
+import br.com.a2ts_mobile.Util.StringDeserialization;
+import br.com.a2ts_mobile.Util.onResponseRetrofitListnnerSynchonize;
 import retrofit2.Call;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
@@ -28,10 +30,10 @@ import retrofit2.Retrofit;
 public class SynchronizeThings extends AsyncTask<Void, Void, String> {
     private Context context;
     public ProgressDialog dialog;
-    public SynchronizeThings.onResponseRetrofitListnner listnner;
+    public onResponseRetrofitListnnerSynchonize listnner;
     private ThingsModel thingsModel;
 
-    public SynchronizeThings(Context context, SynchronizeThings.onResponseRetrofitListnner listnner, ThingsModel thingsModel) {
+    public SynchronizeThings(Context context, onResponseRetrofitListnnerSynchonize listnner, ThingsModel thingsModel) {
         this.context = context;
         this.listnner = listnner;
         this.thingsModel = thingsModel;
@@ -82,27 +84,5 @@ public class SynchronizeThings extends AsyncTask<Void, Void, String> {
         dialog.dismiss();
     }
 
-    public interface onResponseRetrofitListnner{
-        public void responseEditThing(String response);
-    }
 }
 
-class StringDeserialization implements JsonDeserializer<String> {
-    @Override
-    public String deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-        JsonElement response = json.getAsJsonObject();
-        if (json.getAsJsonObject().get("response") != null) {
-            response = json.getAsJsonObject().get("response");
-        }
-        return (new Gson().fromJson(response, String.class));
-    }
-
-//    @Override
-//    public String deserialize(JsonElement json, Type type,
-//                               JsonDeserializationContext context) throws JsonParseException {
-//
-//        JsonObject jobject = json.getAsJsonObject();
-//
-//        return jobject.get("response").getAsString();
-//    }
-}

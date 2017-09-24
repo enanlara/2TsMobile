@@ -9,10 +9,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import br.com.a2ts_mobile.User_Manager.UserModel;
+import br.com.a2ts_mobile.Util.ThingsDeserialization;
+import br.com.a2ts_mobile.Util.onResponseRetrofitListnnerThings;
 import retrofit2.Call;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
@@ -24,10 +25,10 @@ import retrofit2.Retrofit;
 public class SearchForThingsAsync extends AsyncTask<String, Void, List<ThingsModel>>  {
     private Context context;
     public ProgressDialog dialog;
-    public SearchForThingsAsync.onResponseRetrofitListnner listnner;
+    public onResponseRetrofitListnnerThings listnner;
 
 
-    public SearchForThingsAsync(Context context, SearchForThingsAsync.onResponseRetrofitListnner listnner) {
+    public SearchForThingsAsync(Context context, onResponseRetrofitListnnerThings listnner) {
         this.context = context;
         this.listnner = listnner;
     }
@@ -150,8 +151,5 @@ public class SearchForThingsAsync extends AsyncTask<String, Void, List<ThingsMod
         dialog.dismiss();
     }
 
-    public interface onResponseRetrofitListnner{
-        public void responseThings(List<ThingsModel> response);
-    }
 
 }

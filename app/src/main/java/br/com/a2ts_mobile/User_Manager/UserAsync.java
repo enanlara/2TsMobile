@@ -8,11 +8,8 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.List;
-
-import br.com.a2ts_mobile.Synchronization_Manager.SynchronizationThingsService;
-import br.com.a2ts_mobile.Synchronization_Manager.SynchronizeThings;
-import br.com.a2ts_mobile.Things_Manager.ThingsModel;
+import br.com.a2ts_mobile.Util.UserDeserialization;
+import br.com.a2ts_mobile.Util.onResponseRetrofitListnnerUsers;
 import retrofit2.Call;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
@@ -24,10 +21,10 @@ import retrofit2.Retrofit;
 public class UserAsync extends AsyncTask<Void, Void, UserModel> {
     private Context context;
     public ProgressDialog dialog;
-    public UserAsync.onResponseRetrofitListnner listnner;
+    public onResponseRetrofitListnnerUsers listnner;
     private UserModel userModel;
 
-    public UserAsync(Context context, UserAsync.onResponseRetrofitListnner listnner, UserModel userModel) {
+    public UserAsync(Context context, onResponseRetrofitListnnerUsers listnner, UserModel userModel) {
         this.context = context;
         this.listnner = listnner;
         this.userModel = userModel;
@@ -40,9 +37,9 @@ public class UserAsync extends AsyncTask<Void, Void, UserModel> {
 
     @Override
     protected UserModel doInBackground(Void... params) {
-        return editThings();
+        return login();
     }
-    private UserModel editThings(){
+    private UserModel login(){
         try {
 
             Call<UserModel> listThingsService = null;
@@ -81,7 +78,4 @@ public class UserAsync extends AsyncTask<Void, Void, UserModel> {
         dialog.dismiss();
     }
 
-    public interface onResponseRetrofitListnner{
-        public void responseUser(UserModel response);
-    }
 }

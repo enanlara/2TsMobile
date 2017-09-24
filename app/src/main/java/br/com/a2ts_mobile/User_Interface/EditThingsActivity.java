@@ -1,10 +1,8 @@
 package br.com.a2ts_mobile.User_Interface;
 
 import android.content.Intent;
-import android.content.SearchRecentSuggestionsProvider;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,11 +12,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import br.com.a2ts_mobile.MainActivity;
 import br.com.a2ts_mobile.R;
 import br.com.a2ts_mobile.Synchronization_Manager.SynchronizeThings;
 import br.com.a2ts_mobile.Things_Manager.LocationModel;
 import br.com.a2ts_mobile.Things_Manager.ThingsModel;
+import br.com.a2ts_mobile.Util.onResponseRetrofitListnnerSynchonize;
 
 public class EditThingsActivity extends AppCompatActivity {
 
@@ -112,7 +110,7 @@ public class EditThingsActivity extends AppCompatActivity {
             case R.id.menu_formulario_ok:
                 getThingsModel();
 
-                final SynchronizeThings sync = new SynchronizeThings(EditThingsActivity.this, new SynchronizeThings.onResponseRetrofitListnner() {
+                final SynchronizeThings sync = new SynchronizeThings(EditThingsActivity.this, new onResponseRetrofitListnnerSynchonize() {
                     @Override
                     public void responseEditThing(String response) {
                         if(response == null){
@@ -126,32 +124,12 @@ public class EditThingsActivity extends AppCompatActivity {
                         }
                     }
 
-//                    @Override
-//                    public void responseThings(List<ThingsModel> response) {
-//                        listThingsModels = response;
-//                        if(listThingsModels != null) {
-////                    Log.i("ddddd", String.valueOf(response.size()));
-////                    List<ThingsModel> listThingsModel = new ArrayList<ThingsModel>();
-//                            ArrayAdapter<ThingsModel> adapter = new ArrayAdapter<ThingsModel>(ListThingsActivity.this, android.R.layout.simple_list_item_1, response);
-//                            listWiewThings.setAdapter(adapter);
-//                        }
-//
-//                    }
                 }, this.thingsModel);
 
                 sync.execute();
 
-//                SynchronizeThings synchronizeThings = new SynchronizeThings(this);
-
-//                if(thingsModel.getId() != null){
-////                    synchronizeThings.update(thingsModel);
-//                }
-
-
-//                synchronizeThings.close();
-              //  Toast.makeText(EditThingsActivity.this, "Objeto " + thingsModel.getName() + " Alterado!", Toast.LENGTH_SHORT).show();
-               // finish();
                 break;
+
             case android.R.id.home:  //ID do seu botão (gerado automaticamente pelo android, usando como está, deve funcionar
                 startActivity(new Intent(this, MainActivity.class));  //O efeito ao ser pressionado do botão (no caso abre a activity)
                 this.finish();  //Método para matar a activity e não deixa-lá indexada na pilhagem

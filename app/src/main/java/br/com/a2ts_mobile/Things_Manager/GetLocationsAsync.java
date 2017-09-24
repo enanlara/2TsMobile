@@ -11,7 +11,7 @@ import com.google.gson.GsonBuilder;
 import java.util.List;
 
 import br.com.a2ts_mobile.User_Manager.UserModel;
-import br.com.a2ts_mobile.User_Manager.UserService;
+import br.com.a2ts_mobile.Util.*;
 import retrofit2.Call;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
@@ -23,10 +23,10 @@ import retrofit2.Retrofit;
 public class GetLocationsAsync extends AsyncTask<Void, Void, List<LocationModel>>  {
     private Context context;
     public ProgressDialog dialog;
-    public GetLocationsAsync.onResponseRetrofitListnner listnner;
+    public onResponseRetrofitListnnerLocations listnner;
 
 
-    public GetLocationsAsync(Context context, GetLocationsAsync.onResponseRetrofitListnner listnner) {
+    public GetLocationsAsync(Context context, onResponseRetrofitListnnerLocations listnner) {
         this.context = context;
         this.listnner = listnner;
     }
@@ -40,7 +40,7 @@ public class GetLocationsAsync extends AsyncTask<Void, Void, List<LocationModel>
 
             String baseUrl = "https://dg-2ts-server.herokuapp.com/";
 
-            Gson gsonConverter = new GsonBuilder().registerTypeAdapter(LocationModel.class, new LocationDeserialization())
+            Gson gsonConverter = new GsonBuilder().registerTypeAdapter(LocationModel.class, new br.com.a2ts_mobile.Util.LocationDeserialization())
                     .create();
 
             Retrofit retrofit = new Retrofit.Builder()
@@ -73,8 +73,8 @@ public class GetLocationsAsync extends AsyncTask<Void, Void, List<LocationModel>
         dialog.dismiss();
     }
 
-    public interface onResponseRetrofitListnner{
-        public void responseLocations(List<LocationModel> response);
-    }
+//    public interface onResponseRetrofitListnner{
+//        public void responseLocations(List<LocationModel> response);
+//    }
 
 }

@@ -1,4 +1,4 @@
-package br.com.a2ts_mobile;
+package br.com.a2ts_mobile.User_Interface;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -17,12 +17,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.a2ts_mobile.R;
 import br.com.a2ts_mobile.Things_Manager.GetLocationsAsync;
 import br.com.a2ts_mobile.Things_Manager.LocationModel;
-import br.com.a2ts_mobile.User_Interface.EditThingsActivity;
-import br.com.a2ts_mobile.User_Interface.ListThingsActivity;
-import br.com.a2ts_mobile.User_Interface.LoginActivity;
 import br.com.a2ts_mobile.User_Manager.UserModel;
+import br.com.a2ts_mobile.Util.onResponseRetrofitListnnerLocations;
 
 public class MainActivity extends AppCompatActivity {
     private EditText edt_number_things;
@@ -53,11 +52,11 @@ public class MainActivity extends AppCompatActivity {
         edt_number_things.setVisibility(View.GONE);
         options = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
 
-        GetLocationsAsync sync = new GetLocationsAsync(this, new GetLocationsAsync.onResponseRetrofitListnner() {
+        GetLocationsAsync sync = new GetLocationsAsync(this, new onResponseRetrofitListnnerLocations() {
             @Override
             public void responseLocations(List<LocationModel> response) {
                 responseListLocation = response;
-//                response.add(0, new LocationModel(0, "Selecione um local"));
+                response.add(0, new LocationModel(0, "Selecione um local"));
                 LocationModel.listLocations = response;
                 if (response == null) {
                     Toast.makeText(MainActivity.this, "Não foi possivel conectar com o servidor. Verifique a conexão com a internet e tente novamente!!!", Toast.LENGTH_SHORT).show();
@@ -65,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     for (int i = 0; i < response.size(); i++) {
                         listLocation.add(response.get(i).getId().toString());
-                        Log.i("99999999999 ", response.get(i).getRoom());
+//                        Log.i("99999999999 ", response.get(i).getRoom());
                         options.add(response.get(i).getRoom().toString());
 
                     }

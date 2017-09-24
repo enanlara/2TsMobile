@@ -3,11 +3,9 @@ package br.com.a2ts_mobile.User_Interface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import br.com.a2ts_mobile.MainActivity;
 import br.com.a2ts_mobile.R;
 import br.com.a2ts_mobile.Things_Manager.ThingsModel;
 

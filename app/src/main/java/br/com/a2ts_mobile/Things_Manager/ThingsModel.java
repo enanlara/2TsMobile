@@ -134,9 +134,6 @@ public class ThingsModel implements Serializable  {
 
     @Override
     public String toString() {
-        return "ThingsModel{" +
-                "nrThings1=" + nrThings1 +
-                ", description='" + description + '\'' +
-                '}';
+        return "Nº: "+nrThings1+"\n" +description;
     }
 }

@@ -1,9 +1,7 @@
 package br.com.a2ts_mobile.User_Interface;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -16,10 +14,10 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import br.com.a2ts_mobile.MainActivity;
 import br.com.a2ts_mobile.R;
 import br.com.a2ts_mobile.Things_Manager.SearchForThingsAsync;
 import br.com.a2ts_mobile.Things_Manager.ThingsModel;
+import br.com.a2ts_mobile.Util.onResponseRetrofitListnnerThings;
 
 public class ListThingsActivity extends AppCompatActivity {
 
@@ -54,7 +52,7 @@ public class ListThingsActivity extends AppCompatActivity {
 
 
 
-              final SearchForThingsAsync sync = new SearchForThingsAsync(ListThingsActivity.this, new SearchForThingsAsync.onResponseRetrofitListnner() {
+              final SearchForThingsAsync sync = new SearchForThingsAsync(ListThingsActivity.this, new onResponseRetrofitListnnerThings() {
                 @Override
                 public void responseThings(List<ThingsModel> response) {
                     if(response == null){
