@@ -4,37 +4,158 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.a2ts_mobile.User_Interface.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="br.com.a2ts_mobile.User_Interface.MainActivity">
 
-    <TextView
-        android:id="@+id/txt_location"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Localização"
-        android:textSize="24sp" />
+        android:layout_height="match_parent">
 
-    <Spinner
-        android:id="@+id/spn_location"
-        android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        <LinearLayout
 
-    <TextView
-        android:id="@+id/txt_num"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Número da coisa" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/edt_num"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number" />
+            <TextView
+                android:id="@+id/txt_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Setor"
+                android:textSize="24sp" />
 
-    <Button
-        android:id="@+id/btn_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Buscar" />
+            <Spinner
+                android:id="@+id/spn_location"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+            <TextView
+                android:id="@+id/txt_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Código do item" />
+
+            <EditText
+                android:id="@+id/edt_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/btn_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="80dp"
+                android:text="Buscar" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/buttonMenuBuscaPorSetor"
+                        android:layout_width="280dp"
+                        android:layout_height="40dp"
+                        android:background="#9ee7b5"
+                        android:onClick="buscaPorSetor"
+                        android:text="Busca itens por setor" />
+
+                    <TextView
+                        android:id="@+id/textAjudaBuscaSetor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="alertAjuda1"
+                        android:text="Ajuda"
+                        android:textAlignment="center"
+                        android:textColor="#0000ff" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/buttonMenuBuscaItensSobrandoPorSetor"
+                        android:layout_width="280dp"
+                        android:layout_height="40dp"
+                        android:background="#9ee7b5"
+                        android:onClick="buscaSobrandoPorSetor"
+                        android:text="Busca itens sobrando por setor" />
+
+                    <TextView
+                        android:id="@+id/textAjudaBuscaItensSobrandoPorSetor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="alertAjuda2"
+                        android:text="Ajuda"
+                        android:textAlignment="center"
+                        android:textColor="#0000ff" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/buttonMenuBuscaItensFaltandoPorSetor"
+                        android:layout_width="280dp"
+                        android:layout_height="40dp"
+                        android:background="#9ee7b5"
+                        android:onClick="buscaFaltandoPorSetor"
+                        android:text="Busca itens faltando por setor" />
+
+                    <TextView
+                        android:id="@+id/textAjudaBuscaItensFaltandoPorSetor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="alertAjuda3"
+                        android:text="Ajuda"
+                        android:textAlignment="center"
+                        android:textColor="#0000ff" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/buttonMenuBuscaItensPorNumero"
+                        android:layout_width="280dp"
+                        android:layout_height="40dp"
+                        android:background="#9ee7b5"
+                        android:onClick="buscaPorNumero"
+                        android:text="Busca item por número" />
+
+                    <TextView
+                        android:id="@+id/textAjudaBuscaItensPorNumero"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="alertAjuda4"
+                        android:text="Ajuda"
+                        android:textAlignment="center"
+                        android:textColor="#0000ff" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

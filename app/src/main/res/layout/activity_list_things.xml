@@ -4,10 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.a2ts_mobile.User_Interface.ListThingsActivity">
+    tools:context="br.com.a2ts_mobile.User_Interface.ListThingsActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#b3f12222"
+        android:text="  *Toque na lista para detalhar o item"/>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#b3f12222"
+        android:text="  *Toque e segure para abrir opção de editar o item "
+         />
 
     <ListView
         android:id="@+id/list_things"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 </LinearLayout>

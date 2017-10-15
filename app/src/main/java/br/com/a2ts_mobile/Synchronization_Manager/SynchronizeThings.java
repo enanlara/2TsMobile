@@ -76,7 +76,8 @@ public class SynchronizeThings extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPreExecute() {
-        dialog = ProgressDialog.show(context, "Atualizando", "Aguarde", true, true );
+        dialog = ProgressDialog.show(context, "Atualizando", "Aguarde...", true, true );
+        dialog.setCancelable(false);
     }
     @Override
     protected void onPostExecute(String response) {

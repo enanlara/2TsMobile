@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,6 +32,7 @@ public class EditThingsActivity extends AppCompatActivity {
     private TextView note;
     private TextView location;
     private Spinner locationCurrent;
+    private Button btnSave;
 
     private ArrayAdapter<LocationModel> options ;
 
@@ -54,6 +57,7 @@ public class EditThingsActivity extends AppCompatActivity {
         note = (TextView) findViewById(R.id.note);
         location = (TextView) findViewById(R.id.location);
         locationCurrent = (Spinner) findViewById(R.id.spn_location_current);
+        btnSave = (Button) findViewById(R.id.btn_save);
 
         options = new ArrayAdapter<LocationModel>(this, android.R.layout.simple_spinner_dropdown_item, LocationModel.listLocations);
         locationCurrent.setAdapter(options);
@@ -94,6 +98,13 @@ public class EditThingsActivity extends AppCompatActivity {
 //        ThingsModel thingsModel = this.thingsModel;
 
 //
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                acaoSalvar();
+            }
+
+        });
 
     }
 
@@ -108,25 +119,7 @@ public class EditThingsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.menu_formulario_ok:
-                getThingsModel();
-
-                final SynchronizeThings sync = new SynchronizeThings(EditThingsActivity.this, new onResponseRetrofitListnnerSynchonize() {
-                    @Override
-                    public void responseEditThing(String response) {
-                        if(response == null){
-                            Toast.makeText(EditThingsActivity.this, "Não foi possivel alterar o objeto.Verifique a conexão com a internet!", Toast.LENGTH_SHORT).show();
-                        }else{
-                        if(response.equals("OK")){
-                            Toast.makeText(EditThingsActivity.this, "Objeto alterado com sucesso!", Toast.LENGTH_SHORT).show();
-                        }else{
-                            Toast.makeText(EditThingsActivity.this, response, Toast.LENGTH_SHORT).show();
-                        }
-                        }
-                    }
-
-                }, this.thingsModel);
-
-                sync.execute();
+                acaoSalvar();
 
                 break;
 
@@ -146,6 +139,27 @@ public class EditThingsActivity extends AppCompatActivity {
         LocationModel locationCurrentSelected = (LocationModel)locationCurrent.getSelectedItem();
         this.thingsModel.setLocationCurrent(locationCurrentSelected);
        //        this.thingsModel.setLocation(new LocationModel());
+    }
+    private void acaoSalvar(){
+        getThingsModel();
+
+        final SynchronizeThings sync = new SynchronizeThings(EditThingsActivity.this, new onResponseRetrofitListnnerSynchonize() {
+            @Override
+            public void responseEditThing(String response) {
+                if(response == null){
+                    Toast.makeText(EditThingsActivity.this, "Não foi possivel alterar o objeto.Verifique a conexão com a internet!", Toast.LENGTH_SHORT).show();
+                }else{
+                    if(response.equals("OK")){
+                        Toast.makeText(EditThingsActivity.this, "Objeto alterado com sucesso!", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(EditThingsActivity.this, response, Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+        }, this.thingsModel);
+
+        sync.execute();
     }
 
     @Override

@@ -1,6 +1,8 @@
 package br.com.a2ts_mobile.User_Interface;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,12 +26,32 @@ import br.com.a2ts_mobile.User_Manager.UserModel;
 import br.com.a2ts_mobile.Util.onResponseRetrofitListnnerLocations;
 
 public class MainActivity extends AppCompatActivity {
+    private final String textoAjudaBuscaPorSetor = "Busca itens(patrimônio) de acordo com o setor selecionado.\n" +
+            "• Selecione o setor e clique no botão \"BUSCAR\" para buscar os itens.\n" +
+            "• Após clicar no botão o sistema será redirecionado para uma tela onde será listado os itens do patrimônio que estão no setor da busca.\n" +
+            "• 'SETOR' é o local físico onde estão os itens de patrimônio. ";
+    private final String textoAjudaBuscaSobrandoPorSetor = "Busca itens(patrimônio) que pertencem a outros setores, mas se encontram no setor onde foi realizada a busca" +
+            "• Selecione o setor e clique no botão \"BUSCAR\" para buscar os itens\n" +
+            "• Após clicar no botão o sistema será redirecionado para uma tela onde será listado os itens que pertencem a outros patrimônios, mas estão no setor da busca.\n" +
+            "• 'SETOR' é o local físico onde estão os itens de patrimônio ";
+    private final String textoAjudaBuscaFaltandoPorSetor = "Busca itens(patrimônio) que pertencem ao setor que foi feito a busca, mas não se encontra no setor\n" +
+            "• Selecione o setor e clique no botão \"BUSCAR\" para buscar os itens\n" +
+            "• Após clicar no botão o sistema será redirecionado para uma tela onde será listado os itens que pertencem ao setor onde foi feita a busca mas não estão no local.\n" +
+            "• 'SETOR' é o local físico onde estão os itens de patrimônio ";
+    private final String textoAjudaBuscaPorNumero = "Busca item(patrimônio) pelo número da placa.\n" +
+            "• Digite o número do item e clique no botão \"BUSCAR\" para buscar o item\n" +
+            "• Após clicar no botão o sistema será redirecionado para uma tela onde será listado o item relacionado ao número.\n";
     private EditText edt_number_things;
     private TextView txt_num;
     private TextView txt_location;
     private Spinner spn_location;
     private Button btn_seach;
     private int tipoDeConsuta = 1;
+
+    private Button btnPorSetor;
+    private Button btnSPorSetor;
+    private Button btnFPorSetor;
+    private Button btnPorNum;
 
     private List<String> listLocation = new ArrayList<>();
     private List<LocationModel> responseListLocation = new ArrayList<>();
@@ -40,9 +62,16 @@ public class MainActivity extends AppCompatActivity {
         if (UserModel.ID == null) {
             startActivity(new Intent(this, LoginActivity.class));
         }
-        setTitle("Busca por localização");
+        setTitle("Busca itens por setor");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        btnPorSetor = (Button) findViewById(R.id.buttonMenuBuscaPorSetor);
+        btnFPorSetor = (Button) findViewById(R.id.buttonMenuBuscaItensFaltandoPorSetor);
+        btnSPorSetor = (Button) findViewById(R.id.buttonMenuBuscaItensSobrandoPorSetor);
+        btnPorNum = (Button) findViewById(R.id.buttonMenuBuscaItensPorNumero);
+        btnPorSetor.setEnabled(false);
+
         spn_location = (Spinner) findViewById(R.id.spn_location);
         btn_seach = (Button) findViewById(R.id.btn_search);
         edt_number_things = (EditText) findViewById(R.id.edt_num);
@@ -56,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void responseLocations(List<LocationModel> response) {
                 responseListLocation = response;
-                response.add(0, new LocationModel(0, "Selecione um local"));
+                response.add(0, new LocationModel(0, "Selecione um setor"));
                 LocationModel.listLocations = response;
                 if (response == null) {
                     Toast.makeText(MainActivity.this, "Não foi possivel conectar com o servidor. Verifique a conexão com a internet e tente novamente!!!", Toast.LENGTH_SHORT).show();
@@ -103,10 +132,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(1, 1, 0, "Busca por localização");
-        menu.add(1, 2, 1, "Busca coisas sobrando por localização");
-        menu.add(1, 3, 2, "Busca coisas faltando por localização");
-        menu.add(1, 4, 3, "Busca coisa por codigo");
+        menu.add(1, 1, 0, "Busca itens por setor");
+        menu.add(1, 2, 1, "Busca itens sobrando por setor");
+        menu.add(1, 3, 2, "Busca itens faltando por setor");
+        menu.add(1, 4, 3, "Busca item por número");
         menu.add(1, 5, 4, "Sair");
 
         return true;
@@ -115,38 +144,119 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == 1) {
-            setTitle("Busca por localização");
-            txt_num.setVisibility(View.GONE);
-            edt_number_things.setVisibility(View.GONE);
-            txt_location.setVisibility(View.VISIBLE);
-            spn_location.setVisibility(View.VISIBLE);
+            acaoMenuPorSetor();
         } else if (item.getItemId() == 2) {
-            setTitle("Busca coisas sobrando por localização");
-            txt_num.setVisibility(View.GONE);
-            edt_number_things.setVisibility(View.GONE);
-            txt_location.setVisibility(View.VISIBLE);
-            spn_location.setVisibility(View.VISIBLE);
+            acaoMenuSobrandoPorSetor();
         } else if (item.getItemId() == 3) {
-            setTitle("Busca coisas faltando por localização");
-            txt_num.setVisibility(View.GONE);
-            edt_number_things.setVisibility(View.GONE);
-            txt_location.setVisibility(View.VISIBLE);
-            spn_location.setVisibility(View.VISIBLE);
+            acaoMenuFaltandoPorSetor();
         } else if (item.getItemId() == 4) {
-            setTitle("Busca coisas por codigo");
-            txt_location.setVisibility(View.GONE);
-            spn_location.setVisibility(View.GONE);
-            txt_num.setVisibility(View.VISIBLE);
-            edt_number_things.setVisibility(View.VISIBLE);
+            acaoMenuPorNumero();
         } else if (item.getItemId() == 5) {
-            UserModel.ID = null;
-            UserModel.PERMISSION = null;
-            UserModel.TOKEN = null;
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
+            new AlertDialog.Builder(this)
+                    .setTitle("Sair da aplicação")
+                    .setMessage("Tem certeza que deseja sair da aplicação?")
+                    .setPositiveButton("Sim", new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            UserModel.ID = null;
+                            UserModel.PERMISSION = null;
+                            UserModel.TOKEN = null;
+                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                            finish();                        }
+
+                    })
+                    .setNegativeButton("Não", null)
+                    .show();
+
             return false;
         }
         tipoDeConsuta = item.getItemId();
         return true;
+    }
+
+    private void AlertAjuda(String menssagem){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Ajuda");
+        builder.setMessage(menssagem);
+        builder.create();
+        builder.show();
+    }
+
+    public void alertAjuda1(View view) {
+        AlertAjuda(textoAjudaBuscaPorSetor);
+    }
+
+    public void alertAjuda2(View view) {
+        AlertAjuda(textoAjudaBuscaSobrandoPorSetor);
+    }
+    public void alertAjuda3(View view) {
+        AlertAjuda(textoAjudaBuscaFaltandoPorSetor);
+    }
+    public void alertAjuda4(View view) {
+        AlertAjuda(textoAjudaBuscaPorNumero);
+    }
+
+    public void buscaPorSetor(View view) {
+        acaoMenuPorSetor();
+    }
+
+    public void buscaSobrandoPorSetor(View view) {
+        acaoMenuSobrandoPorSetor();
+    }
+
+    public void buscaFaltandoPorSetor(View view) {
+        acaoMenuFaltandoPorSetor();
+    }
+
+    public void buscaPorNumero(View view) {
+        acaoMenuPorNumero();
+    }
+    private void acaoMenuPorSetor(){
+        setTitle("Busca itens por setor");
+        txt_num.setVisibility(View.GONE);
+        edt_number_things.setVisibility(View.GONE);
+        txt_location.setVisibility(View.VISIBLE);
+        spn_location.setVisibility(View.VISIBLE);
+        btnPorSetor.setEnabled(false);
+        btnFPorSetor.setEnabled(true);
+        btnSPorSetor.setEnabled(true);
+        btnPorNum.setEnabled(true);
+
+    }
+    private void acaoMenuSobrandoPorSetor(){
+        setTitle("Busca itens sobrando por setor");
+        txt_num.setVisibility(View.GONE);
+        edt_number_things.setVisibility(View.GONE);
+        txt_location.setVisibility(View.VISIBLE);
+        spn_location.setVisibility(View.VISIBLE);
+        btnSPorSetor.setEnabled(false);
+        btnPorNum.setEnabled(true);
+        btnFPorSetor.setEnabled(true);
+        btnPorSetor.setEnabled(true);
+    }
+    private void acaoMenuFaltandoPorSetor(){
+        setTitle("Busca itens faltando por setor");
+        txt_num.setVisibility(View.GONE);
+        edt_number_things.setVisibility(View.GONE);
+        txt_location.setVisibility(View.VISIBLE);
+        spn_location.setVisibility(View.VISIBLE);
+        btnFPorSetor.setEnabled(false);
+        btnSPorSetor.setEnabled(true);
+        btnPorNum.setEnabled(true);
+        btnPorSetor.setEnabled(true);
+
+    }
+    private void acaoMenuPorNumero(){
+        setTitle("Busca itens por número");
+        txt_location.setVisibility(View.GONE);
+        spn_location.setVisibility(View.GONE);
+        txt_num.setVisibility(View.VISIBLE);
+        edt_number_things.setVisibility(View.VISIBLE);
+        btnPorNum.setEnabled(false);
+        btnPorSetor.setEnabled(true);
+        btnSPorSetor.setEnabled(true);
+        btnFPorSetor.setEnabled(true);
+
     }
 }
