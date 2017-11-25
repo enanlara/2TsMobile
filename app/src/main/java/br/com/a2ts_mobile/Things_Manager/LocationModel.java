@@ -3,10 +3,11 @@ package br.com.a2ts_mobile.Things_Manager;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LocationModel implements Serializable{
-    public static List<LocationModel> listLocations;
+    public static List<LocationModel> listLocations = new ArrayList<>();
 
     @SerializedName("loca_id")
     private Integer id;

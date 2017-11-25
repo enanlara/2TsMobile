@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
+import br.com.a2ts_mobile.Url;
 import br.com.a2ts_mobile.User_Manager.UserModel;
 import br.com.a2ts_mobile.Util.*;
 import retrofit2.Call;
@@ -38,7 +39,7 @@ public class GetLocationsAsync extends AsyncTask<Void, Void, List<LocationModel>
         try {
 
 
-            String baseUrl = "https://dg-2ts-server.herokuapp.com/";
+            String baseUrl = Url.UrlDeACesso;
 
             Gson gsonConverter = new GsonBuilder().registerTypeAdapter(LocationModel.class, new br.com.a2ts_mobile.Util.LocationDeserialization())
                     .create();

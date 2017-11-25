@@ -92,6 +92,7 @@ public class ListThingsActivity extends AppCompatActivity {
                 Intent intent = new Intent(ListThingsActivity.this, EditThingsActivity.class);
                 intent.putExtra("things", thingsModel);
                 startActivity(intent);
+                finish();
                 //Toast.makeText(ListThingsActivity.this, thingsModel.getName(), Toast.LENGTH_SHORT).show();
                 return false;
             }

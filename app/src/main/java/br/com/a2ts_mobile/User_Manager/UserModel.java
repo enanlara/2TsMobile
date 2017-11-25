@@ -7,6 +7,8 @@ import java.io.Serializable;
  */
 
 public class UserModel implements Serializable {
+    public static final String PREF_NAME = "LoginActivityPreferences";
+
     public static Integer ID;
     public static Integer PERMISSION;
     public static String TOKEN;

@@ -3,6 +3,7 @@ package br.com.a2ts_mobile.User_Interface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -30,8 +31,8 @@ public class EditThingsActivity extends AppCompatActivity {
     private TextView dateRegistre;
     private EditText state;
     private TextView note;
-    private TextView location;
     private Spinner locationCurrent;
+    private Spinner location;
     private Button btnSave;
 
     private ArrayAdapter<LocationModel> options ;
@@ -55,12 +56,13 @@ public class EditThingsActivity extends AppCompatActivity {
         dateRegistre = (TextView) findViewById(R.id.date_registre);
         state = (EditText) findViewById(R.id.state);
         note = (TextView) findViewById(R.id.note);
-        location = (TextView) findViewById(R.id.location);
         locationCurrent = (Spinner) findViewById(R.id.spn_location_current);
+        location = (Spinner) findViewById(R.id.spn_location);
         btnSave = (Button) findViewById(R.id.btn_save);
 
         options = new ArrayAdapter<LocationModel>(this, android.R.layout.simple_spinner_dropdown_item, LocationModel.listLocations);
         locationCurrent.setAdapter(options);
+        location.setAdapter(options);
 
 
         // Toast.makeText(EditThingsActivity.this, thingsModel.getName(), Toast.LENGTH_SHORT).show();
@@ -75,15 +77,28 @@ public class EditThingsActivity extends AppCompatActivity {
         dateRegistre.setEnabled(false);
         state.setText( thingsModel.getState().toString());
         note.setText( thingsModel.getNote().toString());
-        location.setText( thingsModel.getLocation().getRoom().toString());
-        location.setEnabled(false);
-        Integer idLoc = thingsModel.getLocationCurrent().getId();
+
+
+        Integer idLoc_current = thingsModel.getLocationCurrent().getId();
+
+        if(idLoc_current != 0){
+            int cont = 0;
+            for (LocationModel locationModel: LocationModel.listLocations){
+                if(locationModel.getId().equals(idLoc_current)){
+                    locationCurrent.setSelection(cont);
+                    break;
+                }
+                cont++;
+            }
+        }
+
+        Integer idLoc = thingsModel.getLocation().getId();
 
         if(idLoc != 0){
             int cont = 0;
             for (LocationModel locationModel: LocationModel.listLocations){
                 if(locationModel.getId().equals(idLoc)){
-                    locationCurrent.setSelection(cont);
+                    location.setSelection(cont);
                     break;
                 }
                 cont++;
@@ -138,10 +153,17 @@ public class EditThingsActivity extends AppCompatActivity {
         this.thingsModel.setNote(note.getText().toString());
         LocationModel locationCurrentSelected = (LocationModel)locationCurrent.getSelectedItem();
         this.thingsModel.setLocationCurrent(locationCurrentSelected);
-       //        this.thingsModel.setLocation(new LocationModel());
+        LocationModel locationSelected = (LocationModel)location.getSelectedItem();
+        this.thingsModel.setLocation(locationSelected);
+        //        this.thingsModel.setLocation(new LocationModel());
     }
     private void acaoSalvar(){
         getThingsModel();
+        Log.i("TESTE",thingsModel.getLocation().getId().toString());
+        if(thingsModel.getLocation().getId().equals(0) || thingsModel.getLocationCurrent().getId().equals(0)){
+            Toast.makeText(EditThingsActivity.this, "Selecione a localização e a localização atual do objeto!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         final SynchronizeThings sync = new SynchronizeThings(EditThingsActivity.this, new onResponseRetrofitListnnerSynchonize() {
             @Override

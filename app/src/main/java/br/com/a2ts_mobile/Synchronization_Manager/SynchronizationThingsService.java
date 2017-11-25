@@ -12,7 +12,7 @@ import retrofit2.http.Path;
 
 public interface SynchronizationThingsService {
 
-    @GET("edit_thing/token={token}&num={num}&locaid={locationCurrent}&situation={situation}&state={state}&note={note}")
-    public Call<String> synchronizeThings(@Path("token") String token, @Path("num") String nrThings, @Path("locationCurrent") String locationCurrent, @Path("situation") String situation, @Path("state") String state, @Path("note") String note);
+    @GET("edit_thing/token={token}&num={num}&locaid_c={locationCurrent}&situation={situation}&state={state}&note={note}&locaid={location}")
+    public Call<String> synchronizeThings(@Path("token") String token, @Path("num") String nrThings, @Path("locationCurrent") String locationCurrent, @Path("situation") String situation, @Path("state") String state, @Path("note") String note, @Path("location") String location);
 
 }

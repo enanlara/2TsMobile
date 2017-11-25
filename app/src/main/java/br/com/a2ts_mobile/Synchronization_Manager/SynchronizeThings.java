@@ -16,6 +16,7 @@ import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
 
 import br.com.a2ts_mobile.Things_Manager.ThingsModel;
+import br.com.a2ts_mobile.Url;
 import br.com.a2ts_mobile.User_Manager.UserModel;
 import br.com.a2ts_mobile.Util.StringDeserialization;
 import br.com.a2ts_mobile.Util.onResponseRetrofitListnnerSynchonize;
@@ -48,7 +49,7 @@ public class SynchronizeThings extends AsyncTask<Void, Void, String> {
 
             Call<String> listThingsService = null;
 
-            String baseUrl = "https://dg-2ts-server.herokuapp.com/";
+            String baseUrl = Url.UrlDeACesso;
 
             Gson gsonConverter = new GsonBuilder().registerTypeAdapter(String.class, new StringDeserialization())
                     .create();
@@ -60,7 +61,7 @@ public class SynchronizeThings extends AsyncTask<Void, Void, String> {
 
             final SynchronizationThingsService services = retrofit.create(SynchronizationThingsService.class);
 
-             listThingsService = services.synchronizeThings(UserModel.TOKEN.trim(), thingsModel.getNrThings1().toString().trim(), thingsModel.getLocationCurrent().getId().toString().trim(), thingsModel.getSituation().trim(), thingsModel.getState().trim(), (thingsModel.getNote().isEmpty()?"None":thingsModel.getNote().trim()));
+             listThingsService = services.synchronizeThings(UserModel.TOKEN.trim(), thingsModel.getNrThings1().toString().trim(), thingsModel.getLocationCurrent().getId().toString().trim(), thingsModel.getSituation().trim(), thingsModel.getState().trim(), (thingsModel.getNote().isEmpty()?" ":thingsModel.getNote().trim()), thingsModel.getLocation().getId().toString());
 
 
             String response = listThingsService.execute().body();

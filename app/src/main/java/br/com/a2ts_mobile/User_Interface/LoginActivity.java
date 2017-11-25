@@ -1,8 +1,11 @@
 package br.com.a2ts_mobile.User_Interface;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -24,6 +27,18 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences sp1 = getSharedPreferences(UserModel.PREF_NAME, MODE_PRIVATE);
+        int id = sp1.getInt("userId",-1);
+        int permission = sp1.getInt("userPermission",-1);
+        String token = sp1.getString("userToken", null);
+        if(id != -1 && permission != -1 && token != null ){
+            UserModel.ID = id;
+            UserModel.PERMISSION = permission;
+            UserModel.TOKEN = token;
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            LoginActivity.this.finish();
+        }
+        Log.i("teste", String.valueOf(sp1.getString("userToken","d")));
         setContentView(R.layout.activity_login);
         login = (EditText)findViewById(R.id.editTextLogin);
         password = (EditText) findViewById(R.id.editTextPassword);
@@ -46,8 +61,17 @@ public class LoginActivity extends AppCompatActivity {
                                 UserModel.ID = response.getId();
                                 UserModel.PERMISSION = response.getPermission();
                                 UserModel.TOKEN = response.getToken();
+
+                                SharedPreferences sp1 = getSharedPreferences(UserModel.PREF_NAME, MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sp1.edit();
+                                editor.putInt("userId", response.getId());
+                                editor.putInt("userPermission", response.getPermission());
+                                editor.putString("userToken", response.getToken());
+                                editor.commit();
+
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 LoginActivity.this.finish();
+
                             }
 
                         }
@@ -72,6 +96,16 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:  //ID do seu botão (gerado automaticamente pelo android, usando como está, deve funcionar
+                this.finish();  //Método para matar a activity e não deixa-lá indexada na pilhagem
+                break;
+            default:break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
 

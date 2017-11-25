@@ -2,6 +2,7 @@ package br.com.a2ts_mobile.User_Interface;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         if (UserModel.ID == null) {
             startActivity(new Intent(this, LoginActivity.class));
         }
-        setTitle("Busca itens por setor");
+        setTitle("Selecione uma opção de busca");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -70,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         btnFPorSetor = (Button) findViewById(R.id.buttonMenuBuscaItensFaltandoPorSetor);
         btnSPorSetor = (Button) findViewById(R.id.buttonMenuBuscaItensSobrandoPorSetor);
         btnPorNum = (Button) findViewById(R.id.buttonMenuBuscaItensPorNumero);
-        btnPorSetor.setEnabled(false);
 
         spn_location = (Spinner) findViewById(R.id.spn_location);
         btn_seach = (Button) findViewById(R.id.btn_search);
@@ -81,27 +81,37 @@ public class MainActivity extends AppCompatActivity {
         edt_number_things.setVisibility(View.GONE);
         options = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
 
-        GetLocationsAsync sync = new GetLocationsAsync(this, new onResponseRetrofitListnnerLocations() {
-            @Override
-            public void responseLocations(List<LocationModel> response) {
-                responseListLocation = response;
-                response.add(0, new LocationModel(0, "Selecione um setor"));
-                LocationModel.listLocations = response;
-                if (response == null) {
-                    Toast.makeText(MainActivity.this, "Não foi possivel conectar com o servidor. Verifique a conexão com a internet e tente novamente!!!", Toast.LENGTH_SHORT).show();
-                    btn_seach.setEnabled(false);
-                } else {
-                    for (int i = 0; i < response.size(); i++) {
-                        listLocation.add(response.get(i).getId().toString());
-//                        Log.i("99999999999 ", response.get(i).getRoom());
-                        options.add(response.get(i).getRoom().toString());
+        txt_location.setVisibility(View.GONE);
+        spn_location.setVisibility(View.GONE);
+        btn_seach.setVisibility(View.GONE);
 
+        if(LocationModel.listLocations.size() == 0 ) {
+            GetLocationsAsync sync = new GetLocationsAsync(this, new onResponseRetrofitListnnerLocations() {
+                @Override
+                public void responseLocations(List<LocationModel> response) {
+                    responseListLocation = response;
+                    response.add(0, new LocationModel(0, "Selecione um setor"));
+                    LocationModel.listLocations = response;
+                    if (response == null) {
+                        Toast.makeText(MainActivity.this, "Não foi possivel conectar com o servidor. Verifique a conexão com a internet e tente novamente!!!", Toast.LENGTH_SHORT).show();
+                        btn_seach.setEnabled(false);
+                    }else {
+                        for (int i = 0; i < LocationModel.listLocations.size(); i++) {
+                            listLocation.add(LocationModel.listLocations.get(i).getId().toString());
+                            options.add(LocationModel.listLocations.get(i).getRoom().toString());
+
+                        }
                     }
                 }
-            }
-        });
-        sync.execute();
+            });
+            sync.execute();
+        }else {
+            for (int i = 0; i < LocationModel.listLocations.size(); i++) {
+                listLocation.add(LocationModel.listLocations.get(i).getId().toString());
+                options.add(LocationModel.listLocations.get(i).getRoom().toString());
 
+            }
+        }
         spn_location.setAdapter(options);
 
         btn_seach.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     dataSearch = localizacao;
                 }
+                Log.i("dddddddd",dataSearch);
                 if(!dataSearch.trim().equals("") && !dataSearch.equals("0")) {
                     Intent listThingsAct = new Intent(MainActivity.this, ListThingsActivity.class);
                     Bundle extras = new Bundle();
@@ -143,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         if (item.getItemId() == 1) {
             acaoMenuPorSetor();
         } else if (item.getItemId() == 2) {
@@ -162,8 +174,15 @@ public class MainActivity extends AppCompatActivity {
                             UserModel.ID = null;
                             UserModel.PERMISSION = null;
                             UserModel.TOKEN = null;
-                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                            finish();                        }
+                            SharedPreferences sp1 = getSharedPreferences(UserModel.PREF_NAME, MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sp1.edit();
+                            editor.putInt("userId", -1);
+                            editor.putInt("userPermission", -1);
+                            editor.putString("userToken", null);
+                            editor.commit();
+                            finish();
+                            System.exit(0);
+                        }
 
                     })
                     .setNegativeButton("Não", null)
@@ -218,10 +237,12 @@ public class MainActivity extends AppCompatActivity {
         edt_number_things.setVisibility(View.GONE);
         txt_location.setVisibility(View.VISIBLE);
         spn_location.setVisibility(View.VISIBLE);
+        btn_seach.setVisibility(View.VISIBLE);
         btnPorSetor.setEnabled(false);
         btnFPorSetor.setEnabled(true);
         btnSPorSetor.setEnabled(true);
         btnPorNum.setEnabled(true);
+        tipoDeConsuta = 1;
 
     }
     private void acaoMenuSobrandoPorSetor(){
@@ -230,10 +251,13 @@ public class MainActivity extends AppCompatActivity {
         edt_number_things.setVisibility(View.GONE);
         txt_location.setVisibility(View.VISIBLE);
         spn_location.setVisibility(View.VISIBLE);
+        btn_seach.setVisibility(View.VISIBLE);
         btnSPorSetor.setEnabled(false);
         btnPorNum.setEnabled(true);
         btnFPorSetor.setEnabled(true);
         btnPorSetor.setEnabled(true);
+        tipoDeConsuta = 2;
+
     }
     private void acaoMenuFaltandoPorSetor(){
         setTitle("Busca itens faltando por setor");
@@ -241,10 +265,13 @@ public class MainActivity extends AppCompatActivity {
         edt_number_things.setVisibility(View.GONE);
         txt_location.setVisibility(View.VISIBLE);
         spn_location.setVisibility(View.VISIBLE);
+        btn_seach.setVisibility(View.VISIBLE);
         btnFPorSetor.setEnabled(false);
         btnSPorSetor.setEnabled(true);
         btnPorNum.setEnabled(true);
         btnPorSetor.setEnabled(true);
+        tipoDeConsuta = 3;
+
 
     }
     private void acaoMenuPorNumero(){
@@ -253,10 +280,12 @@ public class MainActivity extends AppCompatActivity {
         spn_location.setVisibility(View.GONE);
         txt_num.setVisibility(View.VISIBLE);
         edt_number_things.setVisibility(View.VISIBLE);
+        btn_seach.setVisibility(View.VISIBLE);
         btnPorNum.setEnabled(false);
         btnPorSetor.setEnabled(true);
         btnSPorSetor.setEnabled(true);
         btnFPorSetor.setEnabled(true);
+        tipoDeConsuta = 4;
 
     }
 }

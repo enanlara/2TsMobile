@@ -8,6 +8,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import br.com.a2ts_mobile.Url;
 import br.com.a2ts_mobile.Util.UserDeserialization;
 import br.com.a2ts_mobile.Util.onResponseRetrofitListnnerUsers;
 import retrofit2.Call;
@@ -45,7 +46,7 @@ public class UserAsync extends AsyncTask<Void, Void, UserModel> {
 
             Call<UserModel> listThingsService = null;
 
-            String baseUrl = "https://dg-2ts-server.herokuapp.com";
+            String baseUrl = Url.UrlDeACesso;
 
             Gson gsonConverter = new GsonBuilder().registerTypeAdapter(UserModel.class, new UserDeserialization())
                     .create();
