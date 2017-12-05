@@ -25,7 +25,7 @@
                     android:id="@+id/textView01"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Número" />
+                    android:text="Nunber" />
 
                 <TextView
                     android:id="@+id/numThings"
@@ -42,7 +42,7 @@
                     android:id="@+id/textView02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Descrição" />
+                    android:text="Description" />
 
                 <TextView
                     android:id="@+id/description"
@@ -59,7 +59,7 @@
                     android:id="@+id/textView05"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Situação" />
+                    android:text="Situation" />
 
                 <TextView
                     android:id="@+id/situation"
@@ -76,7 +76,7 @@
                     android:id="@+id/textView06"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Valor" />
+                    android:text="Value" />
 
                 <TextView
                     android:id="@+id/value"
@@ -93,7 +93,7 @@
                     android:id="@+id/textView07"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Data de Registro" />
+                    android:text="Registration Date" />
 
                 <TextView
                     android:id="@+id/date_registre"
@@ -110,7 +110,7 @@
                     android:id="@+id/textView03"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Estado" />
+                    android:text="State" />
 
                 <TextView
                     android:id="@+id/state"
@@ -127,7 +127,7 @@
                     android:id="@+id/textView08"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Observação" />
+                    android:text="Note" />
 
                 <TextView
                     android:id="@+id/note"
@@ -144,7 +144,7 @@
                     android:id="@+id/textView04"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Localização" />
+                    android:text="Location" />
 
                 <TextView
                     android:id="@+id/location"
@@ -161,7 +161,7 @@
                     android:id="@+id/textView09"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Localização atual" />
+                    android:text="Location Current" />
 
                 <TextView
                     android:id="@+id/location_current"

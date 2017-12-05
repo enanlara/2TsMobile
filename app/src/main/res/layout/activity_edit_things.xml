@@ -24,7 +24,7 @@
                 android:id="@+id/textViewId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Número" />
+                android:text="Number" />
 
             <EditText
                 android:id="@+id/numThings"
@@ -44,7 +44,7 @@
                 android:id="@+id/textViewCondition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Descrição" />
+                android:text="Description" />
 
             <EditText
                 android:id="@+id/description"
@@ -63,7 +63,7 @@
                 android:id="@+id/textViewType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Situação" />
+                android:text="Situation" />
 
             <EditText
                 android:id="@+id/situation"
@@ -84,7 +84,7 @@
                 android:id="@+id/textViewType1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Valor" />
+                android:text="Value" />
 
             <EditText
                 android:id="@+id/value"
@@ -105,7 +105,7 @@
                 android:id="@+id/textViewType2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Data de registro" />
+                android:text="Registre Date" />
 
             <EditText
                 android:id="@+id/date_registre"
@@ -127,7 +127,7 @@
                 android:id="@+id/textViewDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Estado" />
+                android:text="State" />
 
             <EditText
                 android:id="@+id/state"
@@ -146,7 +146,7 @@
                 android:id="@+id/textViewType3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Observação" />
+                android:text="Note" />
 
             <EditText
                 android:id="@+id/note"
@@ -168,7 +168,7 @@
                 android:id="@+id/textViewName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Localização" />
+                android:text="Location" />
 
             <Spinner
                 android:id="@+id/spn_location"
@@ -184,7 +184,7 @@
                 android:id="@+id/textViewType4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Localização Atual" />
+                android:text="Location Current" />
 
             <Spinner
                 android:id="@+id/spn_location_current"
@@ -204,7 +204,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Salvar" />
+                android:text="Update" />
         </LinearLayout>
     </LinearLayout>
     </ScrollView>

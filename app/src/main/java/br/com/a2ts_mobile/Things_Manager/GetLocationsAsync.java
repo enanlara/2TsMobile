@@ -65,7 +65,7 @@ public class GetLocationsAsync extends AsyncTask<Void, Void, List<LocationModel>
 
     @Override
     protected void onPreExecute() {
-        dialog = ProgressDialog.show(context, "Buscando dados", "Aguarde...", true, true );
+        dialog = ProgressDialog.show(context, "Searching data", "Wait...", true, true );
         dialog.setCancelable(false);
     }
 

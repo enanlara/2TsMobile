@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void responseUser(UserModel response) {
                             if (response == null) {
-                                Toast.makeText(LoginActivity.this, "Erro de autenticação!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Authentication error!", Toast.LENGTH_SHORT).show();
                             } else {
                                 UserModel.ID = response.getId();
                                 UserModel.PERMISSION = response.getPermission();

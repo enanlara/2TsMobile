@@ -71,7 +71,7 @@ public class EditThingsActivity extends AppCompatActivity {
         description.setText( thingsModel.getDescription().toString());
         description.setEnabled(false);
         situation.setText( thingsModel.getSituation().toString());
-        value.setText((thingsModel.getValue().equals(null))?"Valor indefinido":"R$"+String.valueOf(thingsModel.getValue()));
+        value.setText((thingsModel.getValue().equals(null))?"Undefined value\n":"R$"+String.valueOf(thingsModel.getValue()));
         value.setEnabled(false);
         dateRegistre.setText( thingsModel.getDateRegistre());
         dateRegistre.setEnabled(false);
@@ -161,7 +161,7 @@ public class EditThingsActivity extends AppCompatActivity {
         getThingsModel();
         Log.i("TESTE",thingsModel.getLocation().getId().toString());
         if(thingsModel.getLocation().getId().equals(0) || thingsModel.getLocationCurrent().getId().equals(0)){
-            Toast.makeText(EditThingsActivity.this, "Selecione a localização e a localização atual do objeto!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditThingsActivity.this, "Select the location and current location of the item!", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -169,10 +169,10 @@ public class EditThingsActivity extends AppCompatActivity {
             @Override
             public void responseEditThing(String response) {
                 if(response == null){
-                    Toast.makeText(EditThingsActivity.this, "Não foi possivel alterar o objeto.Verifique a conexão com a internet!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditThingsActivity.this, "Could not change item. Check internet connection.!", Toast.LENGTH_SHORT).show();
                 }else{
                     if(response.equals("OK")){
-                        Toast.makeText(EditThingsActivity.this, "Objeto alterado com sucesso!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditThingsActivity.this, "Item successfully changed!", Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(EditThingsActivity.this, response, Toast.LENGTH_SHORT).show();
                     }

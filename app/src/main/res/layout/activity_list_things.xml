@@ -12,14 +12,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#b3f12222"
-        android:text="  *Toque na lista para detalhar o item"/>
+        android:text="  *Touch the list to detail the item"/>
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#b3f12222"
-        android:text="  *Toque e segure para abrir opção de editar o item "
+        android:text="  *Tap and hold to open option to edit item"
          />
 
     <ListView

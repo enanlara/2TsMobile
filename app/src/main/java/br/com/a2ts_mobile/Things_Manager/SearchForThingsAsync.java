@@ -37,7 +37,7 @@ public class SearchForThingsAsync extends AsyncTask<String, Void, List<ThingsMod
 
     @Override
     protected void onPreExecute() {
-        dialog = ProgressDialog.show(context, "Carregando dados", "Aguarde...", true, true );
+        dialog = ProgressDialog.show(context, "Loading data", "Wait...", true, true );
         dialog.setCancelable(false);
     }
 

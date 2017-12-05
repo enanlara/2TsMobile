@@ -21,7 +21,7 @@
                 android:id="@+id/txt_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Setor"
+                android:text="Location"
                 android:textSize="24sp" />
 
             <Spinner
@@ -33,7 +33,7 @@
                 android:id="@+id/txt_num"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Código do item" />
+                android:text="Item Number" />
 
             <EditText
                 android:id="@+id/edt_num"
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="80dp"
-                android:text="Buscar" />
+                android:text="Search" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -65,7 +65,7 @@
                         android:layout_height="40dp"
                         android:background="#9ee7b5"
                         android:onClick="buscaPorSetor"
-                        android:text="Busca itens por setor" />
+                        android:text="Search for items by location" />
 
                     <TextView
                         android:id="@+id/textAjudaBuscaSetor"
@@ -73,7 +73,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:onClick="alertAjuda1"
-                        android:text="Ajuda"
+                        android:text="Help"
                         android:textAlignment="center"
                         android:textColor="#0000ff" />
 
@@ -90,7 +90,7 @@
                         android:layout_height="40dp"
                         android:background="#9ee7b5"
                         android:onClick="buscaSobrandoPorSetor"
-                        android:text="Busca itens sobrando por setor" />
+                        android:text="Search for leftover items by location" />
 
                     <TextView
                         android:id="@+id/textAjudaBuscaItensSobrandoPorSetor"
@@ -98,7 +98,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:onClick="alertAjuda2"
-                        android:text="Ajuda"
+                        android:text="Help"
                         android:textAlignment="center"
                         android:textColor="#0000ff" />
 
@@ -115,7 +115,7 @@
                         android:layout_height="40dp"
                         android:background="#9ee7b5"
                         android:onClick="buscaFaltandoPorSetor"
-                        android:text="Busca itens faltando por setor" />
+                        android:text="Search for missing items by location" />
 
                     <TextView
                         android:id="@+id/textAjudaBuscaItensFaltandoPorSetor"
@@ -123,7 +123,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:onClick="alertAjuda3"
-                        android:text="Ajuda"
+                        android:text="Help"
                         android:textAlignment="center"
                         android:textColor="#0000ff" />
 
@@ -140,7 +140,7 @@
                         android:layout_height="40dp"
                         android:background="#9ee7b5"
                         android:onClick="buscaPorNumero"
-                        android:text="Busca item por número" />
+                        android:text="Search item by number" />
 
                     <TextView
                         android:id="@+id/textAjudaBuscaItensPorNumero"
@@ -148,7 +148,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:onClick="alertAjuda4"
-                        android:text="Ajuda"
+                        android:text="Help"
                         android:textAlignment="center"
                         android:textColor="#0000ff" />
 

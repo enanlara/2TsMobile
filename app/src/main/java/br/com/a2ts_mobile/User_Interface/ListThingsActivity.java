@@ -56,7 +56,7 @@ public class ListThingsActivity extends AppCompatActivity {
                 @Override
                 public void responseThings(List<ThingsModel> response) {
                     if(response == null){
-                        Toast.makeText(ListThingsActivity.this, "Nenhum objeto encontrado!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ListThingsActivity.this, "No items found!", Toast.LENGTH_SHORT).show();
                     }else {
                         listThingsModels = response;
                         if (listThingsModels != null) {
@@ -81,7 +81,7 @@ public class ListThingsActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, final ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        MenuItem editar = menu.add("Editar");
+        MenuItem editar = menu.add("Edit");
         editar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener(){
 
             @Override

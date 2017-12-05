@@ -33,7 +33,7 @@ public class UserAsync extends AsyncTask<Void, Void, UserModel> {
 
     @Override
     protected void onPreExecute() {
-        dialog = ProgressDialog.show(context, "Autenticando", "Aguarde...", true, true );
+        dialog = ProgressDialog.show(context, "Authenticating", "Wait...", true, true );
         dialog.setCancelable(false);
     }
 

@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         if (UserModel.ID == null) {
             startActivity(new Intent(this, LoginActivity.class));
         }
-        setTitle("Selecione uma opção de busca");
+        setTitle("Select a search option");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -90,10 +90,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void responseLocations(List<LocationModel> response) {
                     responseListLocation = response;
-                    response.add(0, new LocationModel(0, "Selecione um setor"));
+                    response.add(0, new LocationModel(0, "Select a location"));
                     LocationModel.listLocations = response;
                     if (response == null) {
-                        Toast.makeText(MainActivity.this, "Não foi possivel conectar com o servidor. Verifique a conexão com a internet e tente novamente!!!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Could not connect to server. Please check your internet connection and try again!!!", Toast.LENGTH_SHORT).show();
                         btn_seach.setEnabled(false);
                     }else {
                         for (int i = 0; i < LocationModel.listLocations.size(); i++) {
@@ -119,11 +119,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 //                String locationSelected = spn_location.getSelectedItem().toString();
-                String localizacao = listLocation.get(spn_location.getSelectedItemPosition());
                 String dataSearch;
                 if (tipoDeConsuta == 4) {
                     dataSearch = edt_number_things.getText().toString();
                 } else {
+                    String localizacao = listLocation.get(spn_location.getSelectedItemPosition());
                     dataSearch = localizacao;
                 }
                 Log.i("dddddddd",dataSearch);
@@ -143,11 +143,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(1, 1, 0, "Busca itens por setor");
-        menu.add(1, 2, 1, "Busca itens sobrando por setor");
-        menu.add(1, 3, 2, "Busca itens faltando por setor");
-        menu.add(1, 4, 3, "Busca item por número");
-        menu.add(1, 5, 4, "Sair");
+        menu.add(1, 1, 0, "Search for items by location");
+        menu.add(1, 2, 1, "Search for leftover items by location");
+        menu.add(1, 3, 2, "Search for missing items by location");
+        menu.add(1, 4, 3, "Search item by mumber");
+        menu.add(1, 5, 4, "Logout");
 
         return true;
     }
@@ -165,9 +165,9 @@ public class MainActivity extends AppCompatActivity {
             acaoMenuPorNumero();
         } else if (item.getItemId() == 5) {
             new AlertDialog.Builder(this)
-                    .setTitle("Sair da aplicação")
-                    .setMessage("Tem certeza que deseja sair da aplicação?")
-                    .setPositiveButton("Sim", new DialogInterface.OnClickListener()
+                    .setTitle("Logout")
+                    .setMessage("Are you sure you want to exit the application?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener()
                     {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                     })
-                    .setNegativeButton("Não", null)
+                    .setNegativeButton("No", null)
                     .show();
 
             return false;
@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void AlertAjuda(String menssagem){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Ajuda");
+        builder.setTitle("Help");
         builder.setMessage(menssagem);
         builder.create();
         builder.show();
@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
         acaoMenuPorNumero();
     }
     private void acaoMenuPorSetor(){
-        setTitle("Busca itens por setor");
+        setTitle("Search for items by location");
         txt_num.setVisibility(View.GONE);
         edt_number_things.setVisibility(View.GONE);
         txt_location.setVisibility(View.VISIBLE);
@@ -246,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void acaoMenuSobrandoPorSetor(){
-        setTitle("Busca itens sobrando por setor");
+        setTitle("Search for leftover items by location");
         txt_num.setVisibility(View.GONE);
         edt_number_things.setVisibility(View.GONE);
         txt_location.setVisibility(View.VISIBLE);
@@ -260,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void acaoMenuFaltandoPorSetor(){
-        setTitle("Busca itens faltando por setor");
+        setTitle("Search for missing items by location");
         txt_num.setVisibility(View.GONE);
         edt_number_things.setVisibility(View.GONE);
         txt_location.setVisibility(View.VISIBLE);
@@ -275,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void acaoMenuPorNumero(){
-        setTitle("Busca itens por número");
+        setTitle("Search item by number");
         txt_location.setVisibility(View.GONE);
         spn_location.setVisibility(View.GONE);
         txt_num.setVisibility(View.VISIBLE);
