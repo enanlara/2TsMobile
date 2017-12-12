@@ -60,8 +60,7 @@ public class ListThingsActivity extends AppCompatActivity {
                     }else {
                         listThingsModels = response;
                         if (listThingsModels != null) {
-//                    Log.i("ddddd", String.valueOf(response.size()));
-//                    List<ThingsModel> listThingsModel = new ArrayList<ThingsModel>();
+
                             ArrayAdapter<ThingsModel> adapter = new ArrayAdapter<ThingsModel>(ListThingsActivity.this, android.R.layout.simple_list_item_1, response);
                             listWiewThings.setAdapter(adapter);
                         }
@@ -69,7 +68,6 @@ public class ListThingsActivity extends AppCompatActivity {
 
                 }
             });
-            Log.i("dddddddddddddddddd", dataSearch+"---"+typeSearch);
             sync.execute(dataSearch, String.valueOf(typeSearch));
 
 
