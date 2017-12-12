@@ -54,11 +54,9 @@ public class GetLocationsAsync extends AsyncTask<Void, Void, List<LocationModel>
 
 
             List<LocationModel> listThingsResponse = listLocation.execute().body();
-            Log.i("----------------", String.valueOf(listThingsResponse.size()));
 
             return listThingsResponse;
         }catch (Exception e){
-            Log.i("EXCEÇÃO----------------", e.getMessage());
             return null;
         }
     }
