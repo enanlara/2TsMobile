@@ -6,90 +6,169 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="br.com.a2ts_mobile.User_Interface.DetailsThingsActivity">
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#DCDCDC"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+        <LinearLayout
 
-        <TextView
-            android:id="@+id/textView01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Codigo" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/codeThings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#C0C0C0"
-        android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#DCDCDC"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView02"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Descrição" />
+                <TextView
+                    android:id="@+id/textView01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nunber" />
 
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#DCDCDC"
-        android:orientation="vertical">
+                <TextView
+                    android:id="@+id/numThings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#C0C0C0"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView03"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Estado" />
+                <TextView
+                    android:id="@+id/textView02"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Description" />
 
-        <TextView
-            android:id="@+id/state"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#C0C0C0"
-        android:orientation="vertical">
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#DCDCDC"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView04"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Localizacao" />
+                <TextView
+                    android:id="@+id/textView05"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Situation" />
 
-        <TextView
-            android:id="@+id/location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#DCDCDC"
-        android:orientation="vertical">
+                <TextView
+                    android:id="@+id/situation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#C0C0C0"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView05"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Situação" />
+                <TextView
+                    android:id="@+id/textView06"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Value" />
 
-        <TextView
-            android:id="@+id/situation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#DCDCDC"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView07"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Registration Date" />
+
+                <TextView
+                    android:id="@+id/date_registre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#C0C0C0"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView03"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="State" />
+
+                <TextView
+                    android:id="@+id/state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#DCDCDC"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView08"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Note" />
+
+                <TextView
+                    android:id="@+id/note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#C0C0C0"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView04"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Location" />
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#DCDCDC"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView09"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Location Current" />
+
+                <TextView
+                    android:id="@+id/location_current"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+</ScrollView>
 </LinearLayout>

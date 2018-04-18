@@ -8,8 +8,13 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import br.com.a2ts_mobile.Url;
+import br.com.a2ts_mobile.User_Manager.UserModel;
+import br.com.a2ts_mobile.Util.ThingsDeserialization;
+import br.com.a2ts_mobile.Util.onResponseRetrofitListnnerThings;
 import retrofit2.Call;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
@@ -21,10 +26,10 @@ import retrofit2.Retrofit;
 public class SearchForThingsAsync extends AsyncTask<String, Void, List<ThingsModel>>  {
     private Context context;
     public ProgressDialog dialog;
-    public SearchForThingsAsync.onResponseRetrofitListnner listnner;
+    public onResponseRetrofitListnnerThings listnner;
 
 
-    public SearchForThingsAsync(Context context, SearchForThingsAsync.onResponseRetrofitListnner listnner) {
+    public SearchForThingsAsync(Context context, onResponseRetrofitListnnerThings listnner) {
         this.context = context;
         this.listnner = listnner;
     }
@@ -32,19 +37,101 @@ public class SearchForThingsAsync extends AsyncTask<String, Void, List<ThingsMod
 
     @Override
     protected void onPreExecute() {
-        dialog = ProgressDialog.show(context, "Carregando dados", "Aguarde", true, true );
+        dialog = ProgressDialog.show(context, "Loading data", "Wait...", true, true );
+        dialog.setCancelable(false);
     }
 
     @Override
     protected List<ThingsModel> doInBackground(String... params) {
-        return  getThingsByLocation(params[0]);
+        String dataSearch = params[0];
+        String typeSearch = params[1];
+
+        if (typeSearch.equals("1")) {
+            return getThingsByLocation(dataSearch);
+        }else if(typeSearch.equals("2")){
+            return getThingsOverByLocation(dataSearch);
+        }else if(typeSearch.equals("3")){
+            return getThingsMissingByLocation(dataSearch);
+        }else if(typeSearch.equals("4")){
+            return getThingsByNum(dataSearch);
+        }
+        return null;
     }
 
-    private List<ThingsModel> getThingsByLocation(String location){
+    private List<ThingsModel> getThingsByLocation(String locaId){
         try {
             Call<List<ThingsModel>> listThingsService = null;
 
-            String baseUrl = "https://my-project-1-171803.appspot.com/";
+            final ThingsService services = createServiceRetrofit();
+            if(services != null) {
+                listThingsService = services.getThingByLocation(UserModel.TOKEN, locaId);
+                List<ThingsModel> listThingsResponse = listThingsService.execute().body();
+
+                return listThingsResponse;
+            }
+            return null;
+        }catch (Exception e){
+            Log.i("EXCEÇÃO----------------", e.getMessage());
+            return null;
+        }
+    }
+
+    private List<ThingsModel> getThingsOverByLocation(String locaId){
+        try {
+            Call<List<ThingsModel>> listThingsService = null;
+
+            final ThingsService services = createServiceRetrofit();
+            if(services != null) {
+                listThingsService = services.getThingsOverByLocation(UserModel.TOKEN, locaId);
+                List<ThingsModel> listThingsResponse = listThingsService.execute().body();
+
+                return listThingsResponse;
+            }
+            return null;
+        }catch (Exception e){
+            Log.i("EXCEÇÃO----------------", e.getMessage());
+            return null;
+        }
+    }
+    private List<ThingsModel> getThingsMissingByLocation(String locaId){
+        try {
+            Call<List<ThingsModel>> listThingsService = null;
+
+            final ThingsService services = createServiceRetrofit();
+            if(services != null) {
+                listThingsService = services.getThingsMissingByLocation(UserModel.TOKEN, locaId);
+                List<ThingsModel> listThingsResponse = listThingsService.execute().body();
+
+                return listThingsResponse;
+            }
+            return null;
+        }catch (Exception e){
+            Log.i("EXCEÇÃO----------------", e.getMessage());
+            return null;
+        }
+    }
+    private List<ThingsModel> getThingsByNum(String num){
+        try {
+            Call<ThingsModel> thingsService = null;
+
+            final ThingsService services = createServiceRetrofit();
+            if(services != null) {
+                thingsService = services.getThingByNum(UserModel.TOKEN, num);
+                ThingsModel thingsResponse = thingsService.execute().body();
+                Log.i("xxxxxxxxxxxxxx",thingsResponse.getDescription());
+                List<ThingsModel> listThings = new ArrayList<>();
+                listThings.add(thingsResponse);
+                return listThings;
+            }
+            return null;
+        }catch (Exception e){
+            Log.i("EXCEÇÃO----------------", e.getMessage());
+            return null;
+        }
+    }
+    private ThingsService createServiceRetrofit(){
+        try {
+            String baseUrl = Url.UrlDeACesso;
 
             Gson gsonConverter = new GsonBuilder().registerTypeAdapter(ThingsModel.class, new ThingsDeserialization())
                     .create();
@@ -54,15 +141,8 @@ public class SearchForThingsAsync extends AsyncTask<String, Void, List<ThingsMod
                     .addConverterFactory(GsonConverterFactory.create(gsonConverter))
                     .build();
 
-            final ThingsService services = retrofit.create(ThingsService.class);
-            listThingsService = services.getThingByLocation(location);
-
-
-            List<ThingsModel> listThingsResponse = listThingsService.execute().body();
-
-            return listThingsResponse;
+            return retrofit.create(ThingsService.class);
         }catch (Exception e){
-            Log.i("EXCEÇÃO----------------", e.getMessage());
             return null;
         }
     }
@@ -73,8 +153,5 @@ public class SearchForThingsAsync extends AsyncTask<String, Void, List<ThingsMod
         dialog.dismiss();
     }
 
-    public interface onResponseRetrofitListnner{
-        public void responseThings(List<ThingsModel> response);
-    }
 
 }

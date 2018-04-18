@@ -10,12 +10,16 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
 
 import br.com.a2ts_mobile.Things_Manager.ThingsModel;
+import br.com.a2ts_mobile.Url;
 import br.com.a2ts_mobile.User_Manager.UserModel;
+import br.com.a2ts_mobile.Util.StringDeserialization;
+import br.com.a2ts_mobile.Util.onResponseRetrofitListnnerSynchonize;
 import retrofit2.Call;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
@@ -27,10 +31,10 @@ import retrofit2.Retrofit;
 public class SynchronizeThings extends AsyncTask<Void, Void, String> {
     private Context context;
     public ProgressDialog dialog;
-    public SynchronizeThings.onResponseRetrofitListnner listnner;
+    public onResponseRetrofitListnnerSynchonize listnner;
     private ThingsModel thingsModel;
 
-    public SynchronizeThings(Context context, SynchronizeThings.onResponseRetrofitListnner listnner, ThingsModel thingsModel) {
+    public SynchronizeThings(Context context, onResponseRetrofitListnnerSynchonize listnner, ThingsModel thingsModel) {
         this.context = context;
         this.listnner = listnner;
         this.thingsModel = thingsModel;
@@ -45,7 +49,7 @@ public class SynchronizeThings extends AsyncTask<Void, Void, String> {
 
             Call<String> listThingsService = null;
 
-            String baseUrl = "https://my-project-1-171803.appspot.com/";
+            String baseUrl = Url.UrlDeACesso;
 
             Gson gsonConverter = new GsonBuilder().registerTypeAdapter(String.class, new StringDeserialization())
                     .create();
@@ -56,7 +60,8 @@ public class SynchronizeThings extends AsyncTask<Void, Void, String> {
                     .build();
 
             final SynchronizationThingsService services = retrofit.create(SynchronizationThingsService.class);
-             listThingsService = services.editThings(thingsModel.getCodeThing(), thingsModel.getDescription(), thingsModel.getState(), thingsModel.getLocation(), thingsModel.getSituation(), UserModel.ID);
+
+             listThingsService = services.synchronizeThings(UserModel.TOKEN.trim(), thingsModel.getNrThings1().toString().trim(), thingsModel.getLocationCurrent().getId().toString().trim(), thingsModel.getSituation().trim(), thingsModel.getState().trim(), (thingsModel.getNote().isEmpty()?" ":thingsModel.getNote().trim()), thingsModel.getLocation().getId().toString());
 
 
             String response = listThingsService.execute().body();
@@ -72,7 +77,8 @@ public class SynchronizeThings extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPreExecute() {
-        dialog = ProgressDialog.show(context, "Atualizando", "Aguarde", true, true );
+        dialog = ProgressDialog.show(context, "updating", "Wait...", true, true );
+        dialog.setCancelable(false);
     }
     @Override
     protected void onPostExecute(String response) {
@@ -80,17 +86,5 @@ public class SynchronizeThings extends AsyncTask<Void, Void, String> {
         dialog.dismiss();
     }
 
-    public interface onResponseRetrofitListnner{
-        public void responseEditThing(String response);
-    }
 }
 
-class StringDeserialization implements JsonDeserializer<String> {
-    @Override
-    public String deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-        JsonElement locations = json.getAsJsonObject();
-        if(json.getAsJsonObject().get("response") != null){
-            locations = json.getAsJsonObject().get("response");
-        }
-        return (new Gson().fromJson(locations, String.class));    }
-}

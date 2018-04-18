@@ -3,6 +3,7 @@ package br.com.a2ts_mobile.User_Interface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import br.com.a2ts_mobile.R;
@@ -10,32 +11,65 @@ import br.com.a2ts_mobile.Things_Manager.ThingsModel;
 
 public class DetailsThingsActivity extends AppCompatActivity {
 
-    private TextView codeThings;
+    private TextView numThings;
     private TextView description;
-    private TextView state;
-    private TextView location;
     private TextView situation;
+    private TextView value;
+    private TextView dateRegistre;
+    private TextView state;
+    private TextView note;
+    private TextView location;
+    private TextView locationCurrent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //Mostrar o botão
+        getSupportActionBar().setHomeButtonEnabled(true);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_things);
 
         Intent intent = getIntent();
         ThingsModel thingsModel = (ThingsModel) intent.getSerializableExtra("things");
-//        Log.i("eeeee", thingsModel.getName());
-        codeThings = (TextView) findViewById(R.id.codeThings);
-        description = (TextView) findViewById(R.id.description);
-        state = (TextView) findViewById(R.id.state);
-        location = (TextView) findViewById(R.id.location);
-        situation = (TextView) findViewById(R.id.situation);
 
-        codeThings.setText( thingsModel.getCodeThing().toString());
+        numThings = (TextView) findViewById(R.id.numThings);
+        description = (TextView) findViewById(R.id.description);
+        situation = (TextView) findViewById(R.id.situation);
+        value = (TextView) findViewById(R.id.value);
+        dateRegistre = (TextView) findViewById(R.id.date_registre);
+        state = (TextView) findViewById(R.id.state);
+        note = (TextView) findViewById(R.id.note);
+        location = (TextView) findViewById(R.id.location);
+        locationCurrent = (TextView) findViewById(R.id.location_current);
+
+
+
+
+        numThings.setText( thingsModel.getNrThings1().toString());
         description.setText( thingsModel.getDescription().toString());
-        state.setText( thingsModel.getState().toString());
-        location.setText( thingsModel.getLocation().toString());
         situation.setText( thingsModel.getSituation().toString());
+        value.setText((thingsModel.getValue().equals(null))?"Valor indefinido":"R$"+String.valueOf(thingsModel.getValue()));
+        dateRegistre.setText( thingsModel.getDateRegistre());
+        state.setText( thingsModel.getState().toString());
+        note.setText( thingsModel.getNote().toString());
+        location.setText( thingsModel.getLocation().getRoom().toString());
+        locationCurrent.setText( thingsModel.getLocationCurrent().getRoom().toString());
+
+
+////        location.setText( thingsModel.getLocation().toString());
 
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { //Botão adicional na ToolBar
+        switch (item.getItemId()) {
+            case android.R.id.home:  //ID do seu botão (gerado automaticamente pelo android, usando como está, deve funcionar
+                super.onBackPressed();
+                this.finish();  //Método para matar a activity e não deixa-lá indexada na pilhagem
+                break;
+            default:break;
+        }
+        return true;
+    }
+
 }

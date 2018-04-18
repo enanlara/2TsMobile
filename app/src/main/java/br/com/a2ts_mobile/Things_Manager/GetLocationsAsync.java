@@ -10,6 +10,9 @@ import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
+import br.com.a2ts_mobile.Url;
+import br.com.a2ts_mobile.User_Manager.UserModel;
+import br.com.a2ts_mobile.Util.*;
 import retrofit2.Call;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
@@ -18,27 +21,27 @@ import retrofit2.Retrofit;
  * Created by Enan on 6/17/2017.
  */
 
-public class GetLocationsAsync extends AsyncTask<Void, Void, List<Location>>  {
+public class GetLocationsAsync extends AsyncTask<Void, Void, List<LocationModel>>  {
     private Context context;
     public ProgressDialog dialog;
-    public GetLocationsAsync.onResponseRetrofitListnner listnner;
+    public onResponseRetrofitListnnerLocations listnner;
 
 
-    public GetLocationsAsync(Context context, GetLocationsAsync.onResponseRetrofitListnner listnner) {
+    public GetLocationsAsync(Context context, onResponseRetrofitListnnerLocations listnner) {
         this.context = context;
         this.listnner = listnner;
     }
 
 
     @Override
-    protected List<Location> doInBackground(Void... params) {
-        Call<List<Location>> listLocation = null;
+    protected List<LocationModel> doInBackground(Void... params) {
+        Call<List<LocationModel>> listLocation = null;
         try {
 
 
-            String baseUrl = "https://my-project-1-171803.appspot.com/";
+            String baseUrl = Url.UrlDeACesso;
 
-            Gson gsonConverter = new GsonBuilder().registerTypeAdapter(Location.class, new LocationDeserialization())
+            Gson gsonConverter = new GsonBuilder().registerTypeAdapter(LocationModel.class, new br.com.a2ts_mobile.Util.LocationDeserialization())
                     .create();
 
             Retrofit retrofit = new Retrofit.Builder()
@@ -47,32 +50,31 @@ public class GetLocationsAsync extends AsyncTask<Void, Void, List<Location>>  {
                     .build();
 
             final ThingsService services = retrofit.create(ThingsService.class);
-            listLocation = services.getAllLocations();
+            listLocation = services.getAllLocations(UserModel.TOKEN);
 
 
-            List<Location> listThingsResponse = listLocation.execute().body();
-            Log.i("----------------", String.valueOf(listThingsResponse.size()));
+            List<LocationModel> listThingsResponse = listLocation.execute().body();
 
             return listThingsResponse;
         }catch (Exception e){
-            Log.i("EXCEÇÃO----------------", e.getMessage());
             return null;
         }
     }
 
     @Override
     protected void onPreExecute() {
-        dialog = ProgressDialog.show(context, "Carregando dados", "Aguarde", true, true );
+        dialog = ProgressDialog.show(context, "Searching data", "Wait...", true, true );
+        dialog.setCancelable(false);
     }
 
     @Override
-    protected void onPostExecute(List<Location> locations) {
+    protected void onPostExecute(List<LocationModel> locations) {
         listnner.responseLocations(locations);
         dialog.dismiss();
     }
 
-    public interface onResponseRetrofitListnner{
-        public void responseLocations(List<Location> response);
-    }
+//    public interface onResponseRetrofitListnner{
+//        public void responseLocations(List<LocationModel> response);
+//    }
 
 }

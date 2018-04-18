@@ -12,12 +12,12 @@
         "source": "C:\\Users\\Enan\\.android\\build-cache\\7cb4d57a5b2240e7dc03d1e991fac00be4028467\\output\\res\\drawable-mdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\Enan\\AndroidStudioProjects\\2TsMobile\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_ic_star_black_48dp.png",
-        "source": "C:\\Users\\Enan\\.android\\build-cache\\7cb4d57a5b2240e7dc03d1e991fac00be4028467\\output\\res\\drawable-mdpi-v4\\abc_ic_star_black_48dp.png"
-    },
-    {
         "merged": "C:\\Users\\Enan\\AndroidStudioProjects\\2TsMobile\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png",
         "source": "C:\\Users\\Enan\\.android\\build-cache\\7cb4d57a5b2240e7dc03d1e991fac00be4028467\\output\\res\\drawable-mdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "C:\\Users\\Enan\\AndroidStudioProjects\\2TsMobile\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_ic_star_black_48dp.png",
+        "source": "C:\\Users\\Enan\\.android\\build-cache\\7cb4d57a5b2240e7dc03d1e991fac00be4028467\\output\\res\\drawable-mdpi-v4\\abc_ic_star_black_48dp.png"
     },
     {
         "merged": "C:\\Users\\Enan\\AndroidStudioProjects\\2TsMobile\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png",

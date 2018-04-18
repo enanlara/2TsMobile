@@ -9,12 +9,11 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <LinearLayout
+        <LinearLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,10 +24,10 @@
                 android:id="@+id/textViewId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Codigo" />
+                android:text="Number" />
 
             <EditText
-                android:id="@+id/codeThings"
+                android:id="@+id/numThings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -45,7 +44,7 @@
                 android:id="@+id/textViewCondition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Descrição" />
+                android:text="Description" />
 
             <EditText
                 android:id="@+id/description"
@@ -54,6 +53,69 @@
                 android:ems="10"
                 android:inputType="textMultiLine"
                 tools:enabled="false" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Situation" />
+
+            <EditText
+                android:id="@+id/situation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                tools:enabled="true" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewType1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Value" />
+
+            <EditText
+                android:id="@+id/value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                tools:enabled="false" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewType2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Registre Date" />
+
+            <EditText
+                android:id="@+id/date_registre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                tools:enabled="false" />
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -65,7 +127,7 @@
                 android:id="@+id/textViewDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Estado" />
+                android:text="State" />
 
             <EditText
                 android:id="@+id/state"
@@ -73,7 +135,28 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textMultiLine"
-                tools:enabled="false" />
+                tools:enabled="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewType3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Note" />
+
+            <EditText
+                android:id="@+id/note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                tools:enabled="true" />
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -85,42 +168,44 @@
                 android:id="@+id/textViewName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Localização" />
+                android:text="Location" />
 
-            <EditText
-                android:id="@+id/location"
+            <Spinner
+                android:id="@+id/spn_location"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                tools:enabled="false" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textViewType"
+                android:id="@+id/textViewType4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Situação" />
+                android:text="Location Current" />
 
-            <EditText
-                android:id="@+id/situation"
+            <Spinner
+                android:id="@+id/spn_location_current"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                tools:enabled="false" />
+                android:layout_height="wrap_content" />
+
 
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-
-
-
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Update" />
+        </LinearLayout>
     </LinearLayout>
     </ScrollView>
 

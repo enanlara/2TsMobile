@@ -8,11 +8,9 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.List;
-
-import br.com.a2ts_mobile.Synchronization_Manager.SynchronizationThingsService;
-import br.com.a2ts_mobile.Synchronization_Manager.SynchronizeThings;
-import br.com.a2ts_mobile.Things_Manager.ThingsModel;
+import br.com.a2ts_mobile.Url;
+import br.com.a2ts_mobile.Util.UserDeserialization;
+import br.com.a2ts_mobile.Util.onResponseRetrofitListnnerUsers;
 import retrofit2.Call;
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
@@ -24,10 +22,10 @@ import retrofit2.Retrofit;
 public class UserAsync extends AsyncTask<Void, Void, UserModel> {
     private Context context;
     public ProgressDialog dialog;
-    public UserAsync.onResponseRetrofitListnner listnner;
+    public onResponseRetrofitListnnerUsers listnner;
     private UserModel userModel;
 
-    public UserAsync(Context context, UserAsync.onResponseRetrofitListnner listnner, UserModel userModel) {
+    public UserAsync(Context context, onResponseRetrofitListnnerUsers listnner, UserModel userModel) {
         this.context = context;
         this.listnner = listnner;
         this.userModel = userModel;
@@ -35,19 +33,20 @@ public class UserAsync extends AsyncTask<Void, Void, UserModel> {
 
     @Override
     protected void onPreExecute() {
-        dialog = ProgressDialog.show(context, "Carregando dados", "Aguarde", true, true );
+        dialog = ProgressDialog.show(context, "Authenticating", "Wait...", true, true );
+        dialog.setCancelable(false);
     }
 
     @Override
     protected UserModel doInBackground(Void... params) {
-        return editThings();
+        return login();
     }
-    private UserModel editThings(){
+    private UserModel login(){
         try {
 
-            Call<List<UserModel>> listThingsService = null;
+            Call<UserModel> listThingsService = null;
 
-            String baseUrl = "https://my-project-1-171803.appspot.com/";
+            String baseUrl = Url.UrlDeACesso;
 
             Gson gsonConverter = new GsonBuilder().registerTypeAdapter(UserModel.class, new UserDeserialization())
                     .create();
@@ -61,11 +60,11 @@ public class UserAsync extends AsyncTask<Void, Void, UserModel> {
             listThingsService = services.logar(this.userModel.getEmail(), this.userModel.getPassword());
 
 
-            List<UserModel> response = listThingsService.execute().body();
-            if(response.size() == 0){
+            UserModel response = listThingsService.execute().body();
+            if(response.getId() == null){
                 return null;
             }else{
-               return response.get(0);
+               return response;
             }
         }catch (Exception e){
             Log.i("EXCEÇÃO----------------", e.getMessage());
@@ -81,7 +80,4 @@ public class UserAsync extends AsyncTask<Void, Void, UserModel> {
         dialog.dismiss();
     }
 
-    public interface onResponseRetrofitListnner{
-        public void responseUser(UserModel response);
-    }
 }
